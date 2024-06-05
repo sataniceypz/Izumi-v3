@@ -18,7 +18,7 @@ izumi({
 }, async (message, match, client) => {
     var amount = value[Math.floor(Math.random() * value.length)];
     const amountInPaise = parseInt(amount, 10) * 1000;
-    const cap = "Iᴢᴜᴍɪ-ᴠ2\n\nRᴇᴘᴏ:*https://github.com/sataniceypz/IZUMI-V3*\n\nExᴛᴇʀɴᴀʟ-Pʟᴜɢɪɴꜱ:*https://github.com/sataniceypz/IZUMI-EXPLUGINS*\n\nOᴡɴᴇʀ:*https://wa.me/message/IU2AC4VHJADIF1*";
+    const cap = "Iᴢᴜᴍɪ-ᴠ3\n\nRᴇᴘᴏ:*https://github.com/sataniceypz/IZUMI-V3*\n\nOᴡɴᴇʀ:*https://wa.me/message/IU2AC4VHJADIF1*";
 
     await message.client.relayMessage(message.jid, {
         requestPaymentMessage: {
