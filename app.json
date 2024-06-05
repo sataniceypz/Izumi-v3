@@ -1,0 +1,73 @@
+{
+  "name": "Izumi-v3",
+  "description": "Izumi a Multi Device whatsapp bot",
+  "logo": "https://i.imgur.com/Hgiamot.jpeg",
+  "keywords": ["whatsapp"],
+  "repository": "https://github.com/sataniceypz/Izumi-md",
+  "website": "https://eypz-izumi.vercel.app",
+  "success_url": "https://github.com/sataniceypz/Izumi-md",
+  "stack": "container",
+  "env": {
+    "SESSION_ID": {
+      "description": "enter your session id",
+      "required": true
+    },
+     "MENU_URL": {
+      "description": " ",
+      "required": "false",
+      "value": "https://i.imgur.com/8H2hM6D.jpeg"
+     },
+     "BOT_NAME": {
+      "description": "enter your bot name",
+      "required": "false",
+      "value": "Iᴢᴜᴍɪ-ᴍᴅ"
+    },
+       "PACKNAME": {
+      "description": "enter tou sticker pack name",
+      "required": "false",
+      "value": "Iᴢᴜᴍɪ-ᴍᴅ"
+    },
+       "OWNER_NAME": {
+       "description": "Enter your name"
+       "required": "true",
+       "value": "Eʏᴘᴢ"
+    },
+     "AUTHOR": {
+      "description": "enter sticker pack author name ",
+      "required": "false",
+      "value": "Eypz"
+    },
+    "SUDO": {
+      "description": "add your bot number here for run Izumi🧚‍♂️",
+      "required": "false",
+      "value": "917994489493,919544951258",
+    },
+    "MODE": {
+      "description": "bot work mode",
+      "required": "true",
+      "value": "private"
+     },
+    "HEROKU": {
+      "description": "Don't change this",
+      "required": true,
+       "value":"true"
+     },
+    "HEROKU_APP_NAME": {
+      "description": "Heroku app name, same as above entered",
+      "required": true
+    },
+    "HEROKU_API_KEY": {
+      "description": "Heroku account api key, https://dashboard.heroku.com/account",
+      "required": true
+     }
+ },
+ "addons": [{
+      "plan": "heroku-postgresql"
+    }],
+    "buildpacks": [{
+      "url": "heroku-community/apt"
+      },
+      {
+      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
+      }]
+  }
