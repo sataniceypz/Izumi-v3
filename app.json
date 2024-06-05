@@ -3,9 +3,9 @@
   "description": "Izumi a Multi Device whatsapp bot",
   "logo": "https://i.imgur.com/Hgiamot.jpeg",
   "keywords": ["whatsapp"],
-  "repository": "https://github.com/sataniceypz/Izumi-md",
+  "repository": "https://github.com/sataniceypz/Izumi-v3",
   "website": "https://eypz-izumi.vercel.app",
-  "success_url": "https://github.com/sataniceypz/Izumi-md",
+  "success_url": "https://github.com/sataniceypz/Izumi-v3",
   "stack": "container",
   "env": {
     "SESSION_ID": {
@@ -43,7 +43,7 @@
       "value": "Eypz"
     },
     "SUDO": {
-      "description": "add Sudo number  separate with , ",
+      "description": "add Sudo number",
       "required": "false",
       "value": "917994489493,919544951258",
     },
