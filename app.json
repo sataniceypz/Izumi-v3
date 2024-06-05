@@ -28,12 +28,12 @@
       "value": "Iᴢᴜᴍɪ-ᴍᴅ"
     },
        "OWNER_NAME": {
-       "description": "Enter your name"
+       "description": "Enter your name",
        "required": "true",
        "value": "Eʏᴘᴢ"
     },
        "CAPTION": {
-       "description": "Enter youR Caption"
+       "description": "Enter youR Caption",
        "required": "false",
        "value": "Iᴢᴜᴍɪ-ᴍᴅ"
     },
