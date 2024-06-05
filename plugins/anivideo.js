@@ -7,7 +7,7 @@ izumi ({
     type: "AnimeVideo",
 }, async (message, match) => {
 const { result } = await getJson('https://api.maskser.me/api/anime/naruto?apikey=izumi-v3')
-message.sendFromUrl(result.url,{caption: `${config.CAPTION`})
+message.sendFromUrl(result.url,{caption: `${config.CAPTION}`})
 });
 
 izumi ({
@@ -17,7 +17,7 @@ izumi ({
     type: "AnimeVideo",
 }, async (message, match) => {
 const { result } = await getJson('https://api.maskser.me/api/anime/anivideo?apikey=izumi-v3')
-message.sendFromUrl(result.url,{caption: `${config.CAPTION`})
+message.sendFromUrl(result.url,{caption: `${config.CAPTION}`})
 });
  izumi ({
     pattern: "mstatus",
@@ -26,7 +26,7 @@ message.sendFromUrl(result.url,{caption: `${config.CAPTION`})
     type: "media",
 }, async (message, match) => {
 const { result } = await getJson('https://api.maskser.me/api/randomvideo/msts?apikey=izumi-v3')
-message.sendFromUrl(result.video,{caption: `${config.CAPTION`})
+message.sendFromUrl(result.video,{caption: `${config.CAPTION}`})
 });
  izumi ({
     pattern: "sexy",
@@ -35,5 +35,5 @@ message.sendFromUrl(result.video,{caption: `${config.CAPTION`})
     type: "media",
 }, async (message, match, client) => {
 let url = `https://api.maskser.me/api/randomvideo/sexy?apikey=izumi-v3`
-message.sendFromUrl(url,{caption: `${config.CAPTION`})
+message.sendFromUrl(url,{caption: `${config.CAPTION}`})
 });
