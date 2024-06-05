@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: IZUMI-V3
+    env: node
+    branch: main
+    repo: https://github.com/sataniceypz/Izumi-v3.git
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    autoDeploy: false
+    envVars:
+      - key: SESSION_ID
+        sync: false
+      - key: WORK_TYPE
+        value: private
+      - key: SERVER
+        value: render
+      - key: CAPTION
+        value: 𝗜𝗭𝗨𝗠𝗜-𝗫𝗗
+      - key: SUDO
+        value: 917994489493
