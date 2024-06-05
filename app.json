@@ -34,8 +34,7 @@
     },
        "CAPTION": {
        "description": "Enter youR Caption",
-       "required": "false",
-       "value": "Iᴢᴜᴍɪ-ᴍᴅ"
+       "required": "false"
     },
      "AUTHOR": {
       "description": "enter sticker pack author name ",
@@ -48,7 +47,7 @@
       "value": "917994489493,919544951258",
     },
     "MODE": {
-      "description": "bot work mode",
+      "description": "bot work type",
       "required": "true",
       "value": "private"
      },
@@ -59,11 +58,11 @@
      },
     "HEROKU_APP_NAME": {
       "description": "Heroku app name, same as above entered",
-      "required": true
+      "required": "true"
     },
     "HEROKU_API_KEY": {
       "description": "Heroku account api key, https://dashboard.heroku.com/account",
-      "required": true
+      "required": "true"
      }
  },
  "addons": [{
