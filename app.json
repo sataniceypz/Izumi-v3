@@ -44,7 +44,7 @@
     "SUDO": {
       "description": "add Sudo number",
       "required": "false",
-      "value": "917994489493,919544951258",
+      "value": "917994489493,919544951258"
     },
     "MODE": {
       "description": "bot work type",
