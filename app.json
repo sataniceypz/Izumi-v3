@@ -13,7 +13,7 @@
       "required": true
     },
      "MENU_URL": {
-      "description": " ",
+      "description": "Add Url of image or Video",
       "required": "false",
       "value": "https://i.imgur.com/8H2hM6D.jpeg"
      },
@@ -32,13 +32,18 @@
        "required": "true",
        "value": "Eʏᴘᴢ"
     },
+       "CAPTION": {
+       "description": "Enter youR Caption"
+       "required": "false",
+       "value": " "
+    },
      "AUTHOR": {
       "description": "enter sticker pack author name ",
       "required": "false",
       "value": "Eypz"
     },
     "SUDO": {
-      "description": "add your bot number here for run Izumi🧚‍♂️",
+      "description": "add Sudo number ( separate with , )",
       "required": "false",
       "value": "917994489493,919544951258",
     },
