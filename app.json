@@ -10,7 +10,7 @@
   "env": {
     "SESSION_ID": {
       "description": "enter your session id",
-      "required": true
+      "required": "true"
     },
      "MENU_URL": {
       "description": "Add Url of image or Video",
