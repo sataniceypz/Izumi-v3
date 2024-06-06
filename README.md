@@ -29,3 +29,6 @@
    pkg update && pkg install -y nodejs git && git clone https://github.com/mask-sir/izumi-qr.git && cd izumi-qr && npm install && node index.js
    ```
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
+
+#### THANKS TO
+- [ Mask-Ser💗](https://github.com/mask-sir) <br>
