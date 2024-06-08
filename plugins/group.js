@@ -1,4 +1,4 @@
-const { izumi,mode,isAdmin,sleep } = require("../lib/");
+const { izumi,mode,isAdmin,sleep,parsedJid } = require("../lib/");
  izumi(
   {
     pattern: "promote ?(.*)",
