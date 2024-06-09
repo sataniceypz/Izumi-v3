@@ -1,7 +1,7 @@
 const { izumi,mode } = require('../lib/');
 const fs = require('fs');
 const got = require("got");
-const Db = require('../lib/database/plugin');
+const Db = require('../lib/database/plugins');
 izumi({
 	pattern: 'reboot',
 	fromMe: true,
