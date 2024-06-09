@@ -29,7 +29,7 @@ module.exports = {
   READ_MSG: toBool(process.env.READ_MSG),
   OWNER_NAME: process.env.OWNER_NAME || "Eypz God",
   BOT_NAME: process.env.BOT_NAME || "𝚰𝚭𝐔𝚳𝚰-𝚅3",
-  SUDO: process.env.SUDO || "0",
+  SUDO: process.env.SUDO || null,
   LANG: process.env.LANGUAGE === undefined ? 'EN' : process.env.LANGUAGE.toUpperCase(),
   PACKNAME: process.env.PACKNAME || "Izumi-v3",
   PROCESSNAME: process.env.PROCESSNAME || "Izumi-v3",

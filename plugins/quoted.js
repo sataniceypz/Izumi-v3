@@ -3,7 +3,7 @@ const { loadMessage } = require("../lib/database/store");
 
 izumi(
   {
-    pattern: "quoted",
+    pattern: "quoted$",
     fromMe: mode,
     desc: "quoted message",
     type:"user",
