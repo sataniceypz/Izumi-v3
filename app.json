@@ -36,6 +36,11 @@
        "description": "Enter youR Caption",
        "required": "false"
     },
+        "PREFIX": {
+       "description": "prefix for bot",
+       "required": "false",
+       "value": "."
+    },
      "AUTHOR": {
       "description": "enter sticker pack author name ",
       "required": "false",
