@@ -28,12 +28,3 @@ message.sendFromUrl(result.url,{caption: `${config.CAPTION}`})
 const { result } = await getJson('https://api.maskser.me/api/randomvideo/msts?apikey=izumi-v3')
 message.sendFromUrl(result.video,{caption: `${config.CAPTION}`})
 });
- izumi ({
-    pattern: "sexy",
-    fromMe: mode,
-    desc: "random girls reels videos",
-    type: "media",
-}, async (message, match, client) => {
-let url = `https://api.maskser.me/api/randomvideo/sexy?apikey=izumi-v3`
-message.sendFromUrl(url,{caption: `${config.CAPTION}`})
-});
