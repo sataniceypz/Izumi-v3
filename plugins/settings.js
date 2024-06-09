@@ -3,7 +3,7 @@ const fs = require('fs');
 const got = require("got");
 const Db = require('../lib/database/plugin');
 izumi({
-	pattern: 'reboot',
+	pattern: 'reboot$',
 	fromMe: true,
 	desc: 'Bot restart',
 	type: 'user'
@@ -13,7 +13,7 @@ return require('pm2').restart('index.js');
 });
 const value = ["99000","88000","77000","660000","55000","44000","33000","22000","11000","9999","999","99"];
 izumi({
-    pattern: "script",
+    pattern: "script$",
     fromMe: mode,
     desc: "Izumi",
     type: "info",
