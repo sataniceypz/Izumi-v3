@@ -12,6 +12,20 @@
       "description": "enter your session id",
       "required": "true"
     },
+     "HEROKU": {
+      "description": "Don't change this",
+      "required": true,
+       "value":"true"
+     },
+    "HEROKU_APP_NAME": {
+      "description": "Heroku app name, same as above entered",
+      "required": "true"
+    },
+    "HEROKU_API_KEY": {
+      "description": "Heroku account api key, https://dashboard.heroku.com/account",
+      "required": "true"
+     }
+ },
      "MENU_URL": {
       "description": "Add Url of image or Video",
       "required": "false",
@@ -22,7 +36,7 @@
       "required": "false",
       "value": "Iᴢᴜᴍɪ-ᴍᴅ"
     },
-       "PACKNAME": {
+       "STICKER_PACKNAME": {
       "description": "enter tou sticker pack name",
       "required": "false",
       "value": "Iᴢᴜᴍɪ-ᴍᴅ"
@@ -56,20 +70,6 @@
       "required": "true",
       "value": "private"
      },
-    "HEROKU": {
-      "description": "Don't change this",
-      "required": true,
-       "value":"true"
-     },
-    "HEROKU_APP_NAME": {
-      "description": "Heroku app name, same as above entered",
-      "required": "true"
-    },
-    "HEROKU_API_KEY": {
-      "description": "Heroku account api key, https://dashboard.heroku.com/account",
-      "required": "true"
-     }
- },
  "addons": [{
       "plan": "heroku-postgresql"
     }],

@@ -1,5 +1,5 @@
  const config = require("../config");
-const { izumi, mode, toAudio,webp2mp4 } = require("../lib/");
+const { izumi, mode, toAudio,webp2mp4,addExif } = require("../lib/");
 izumi(
   {
     pattern: "sticker",
@@ -26,19 +26,18 @@ izumi(
     );
   }
 );
- izumi(
-  {
-    pattern: "take ?(.*)",
-    fromMe: mode,
-    desc: "Change sticker pack name",
-    type: "converter",
-  },
-  async (message, match, client) => {
-    if (!message.reply_message.sticker)
-      return await message.reply("_Reply to a sticker_");
-    const packname = match.split(";")[0] || config.PACKNAME;
-    const author = match.split(";")[1] || config.AUTHOR;
-    let buff = await message.quoted.download("buffer");
-    message.sendMessage(message.jid, buff, { packname, author }, "sticker");
+izumi(
+  { pattern: 'take ?(.*)', fromMe: mode, desc: 'change sticker/audio pack name', type: 'generator' },
+  async (message, match) => {
+    if (!message.reply_message.sticker || !message.reply_message)
+      return await message.reply('*Reply to sticker*')
+    return await message.sendMsg(
+      await addExif(
+        await message.reply_message.download(),
+        match
+      ),
+      {},
+      'sticker'
+    )
   }
-);
+)
