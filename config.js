@@ -32,6 +32,7 @@ module.exports = {
   SUDO: process.env.SUDO || null,
   LANG: process.env.LANGUAGE === undefined ? 'EN' : process.env.LANGUAGE.toUpperCase(),
   PACKNAME: process.env.PACKNAME || "Izumi-v3",
+   STICKER_PACKNAME: process.env.STICKER_PACKNAME || "IZUMI-V3;❤️",
   PROCESSNAME: process.env.PROCESSNAME || "Izumi-v3",
   AUTHOR: process.env.AUTHOR || "Eypz God",
   DELETED_LOG_CHAT: process.env.DELETED_LOG_CHAT || false,
