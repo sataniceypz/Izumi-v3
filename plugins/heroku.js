@@ -251,6 +251,7 @@ izumi(
             await message.reply("*_UPDATED_*");
             await message.reply("_bot restarting wait for some time_");
             exec("npm install").stderr.pipe(process.stderr);
+            return require('pm2').restart('index.js');
           } else if (err) {
             await message.reply(
               "*❌ Update failed!*\n*Error:* ```" + err + "```"
