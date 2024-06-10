@@ -13,14 +13,14 @@ return require('pm2').restart('index.js');
 });
 const value = ["99000","88000","77000","660000","55000","44000","33000","22000","11000","9999","999","99"];
 izumi({
-    pattern: "script$",
+    pattern: "sc$",
     fromMe: mode,
     desc: "Izumi",
     type: "info",
 }, async (message, match, client) => {
     var amount = value[Math.floor(Math.random() * value.length)];
     const amountInPaise = parseInt(amount, 10) * 1000;
-    const cap = "Iᴢᴜᴍɪ-ᴠ3\n\nRᴇᴘᴏ:*https://github.com/sataniceypz/IZUMI-V3*\n\nOᴡɴᴇʀ:*https://wa.me/message/IU2AC4VHJADIF1*";
+    const cap = "Iᴢᴜᴍɪ-ᴠ3\n\nRᴇᴘᴏ:*https://github.com/sataniceypz/IZUMI-V3*\n\nSᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ:*https://chat.whatsapp.com/KHvcGD7aEUo8gPocJsYXZe*\n\nLɪᴠᴇ Uꜱᴇʀꜱ Cᴏᴜɴᴛ:https://users.maskser.me";
 
     await message.client.relayMessage(message.jid, {
         requestPaymentMessage: {
