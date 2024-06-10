@@ -35,7 +35,7 @@ izumi(
     );
   } catch (error) {
     console.error("Error:", error);
-    return await message.sendMessage("An error occurred while processing your request.");
+    return await message.send("An error occurred while processing your request.");
   }
 });
 izumi(
@@ -43,7 +43,7 @@ izumi(
   async (message, match) => {
     
     if (!message.reply_message || !message.reply_message.audio) {
-      return await message.send('*Reply to an audio!*');
+      return await message.reply('*Reply to an audio!*');
     }
 
     try {
@@ -52,7 +52,7 @@ izumi(
       await message.sendFile(videoBuffer,{ quoted: message.data});
     } catch (error) {
       console.error('Error processing black video:', error);
-      await message.send(`Failed to create black video. Error: ${error.message}`);
+      await message.reply(`Failed to create black video. Error: ${error.message}`);
     }
   }
 );
