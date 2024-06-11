@@ -24,7 +24,7 @@ module.exports = {
   LOG_MSG: toBool(process.env.LOG_MSG) || true,
   READ_CMD: toBool(process.env.READ_CMD),
   SESSION_ID: process.env.SESSION_ID || null,
-  MENU_URL: process.env.MENU_URL || "https://i.imgur.com/8H2hM6D.jpeg",
+  MENU_URL: process.env.MENU_URL || "https://telegra.ph/file/6969611f421f0855a5401.jpg",
   CAPTION: process.env.CAPTION || "Iᴢᴜᴍɪ",
   READ_MSG: toBool(process.env.READ_MSG),
   OWNER_NAME: process.env.OWNER_NAME || "Eypz God",

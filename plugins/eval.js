@@ -1,1 +1,68 @@
-!function(){for(var n=_0x18c8,t=_0x3fac();;)try{if(550209==-parseInt(n(296))*(parseInt(n(261))/2)+parseInt(n(346))/3*(-parseInt(n(233))/4)+parseInt(n(184))/5*(parseInt(n(330))/6)+-parseInt(n(337))/7*(parseInt(n(332))/8)+-parseInt(n(334))/9+parseInt(n(317))/10+parseInt(n(187))/11*(parseInt(n(338))/12))break;t.push(t.shift())}catch(n){t.push(t.shift())}}();const _0x164e9b=_0x381f;function _0x73a0(){const n=_0x18c8,t={LAbQO:n(210),QlPuA:n(322),iIDXC:n(274),uHFri:n(368),Equlj:n(246),bKbVi:n(281),Ciqmm:n(221),HkRSl:n(343),PjQKu:n(230),kukeV:n(321),VnxQq:n(280),hXCgk:n(228),lUNow:n(266),mPtXy:n(190),jsABg:n(192),IRAVH:n(250),fDArT:n(205)+"uC",urpdG:n(356)+"Ib",mMiUg:n(207),Ccwba:n(264),aHWIR:n(183),YJasE:n(282)+"v",KZpWO:n(359),PlhpZ:n(194),OJUPl:n(311),cMTgY:n(219),aUeBC:n(318),apkgB:n(292),unfKn:n(313),cDIBn:n(198),iykaL:n(307),aebMa:n(316)+"M",uVRYc:n(241)+"Z",GQGqR:n(193),NEnMo:n(255),oGdvI:n(342),YpMaK:n(320)+n(327),vCwHB:n(366),ctRuH:n(354),njlth:n(353),jgbQL:n(185),NxBmO:n(224),FbWAG:n(348)+n(179),MoSlY:n(323),bjxjB:n(206),vtQSb:n(240),IKJao:n(247),JHuuH:function(n){return n()}},r=[t[n(182)],t[n(216)],t[n(283)],t[n(258)],t[n(302)],t[n(269)],t[n(300)],t[n(273)],t[n(290)],t[n(308)],t[n(303)],t[n(252)],t[n(262)],t[n(301)],t[n(310)],t[n(257)],t[n(212)],t[n(331)],t[n(189)],t[n(259)],t[n(319)],t[n(335)],t[n(326)],t[n(315)],t[n(242)],t[n(239)],t[n(309)],t[n(202)],t[n(244)],t[n(277)],t[n(340)],t[n(208)],t[n(223)],t[n(333)],t[n(213)],t[n(195)],t[n(237)],t[n(234)],t[n(362)],t[n(209)],t[n(215)],t[n(306)],t[n(305)],t[n(287)],t[n(263)],t[n(288)],t[n(297)]];return _0x73a0=function(){return r},t[n(268)](_0x73a0)}function _0x18c8(n,t){const r=_0x3fac();return(_0x18c8=function(n,t){return n-=179,r[n]})(n,t)}function _0x381f(n,t){const u=_0x18c8,e={zuyOm:function(n,t){return n-t},ZjcKx:function(n,t){return n+t},japsT:function(n,t){return n*t},hlQRF:function(n){return n()},RyvGe:function(n,t,r){return n(t,r)}},i=e[u(293)](_0x73a0);return _0x381f=function(n,t){var r=u,r=(n=e[r(232)](n,e[r(236)](e[r(236)](1138,e[r(243)](1,-8893)),e[r(243)](-8233,-1))),i[n]);return r},e[u(270)](_0x381f,n,t)}!function(n){for(var t=_0x18c8,r={uWlHT:function(n){return n()},AYAGR:function(n,t){return n+t},ZqJfO:function(n,t){return n+t},YTBqp:function(n,t){return n+t},BACbx:function(n,t){return n+t},BEVIK:function(n,t){return n*t},NpVnb:function(n,t){return n/t},zLKuK:function(n,t){return n(t)},VKxuX:function(n,t){return n(t)},kcmHs:function(n,t){return n*t},AJGnu:function(n,t){return n/t},andBr:function(n,t){return n(t)},jaRgD:function(n,t){return n*t},CjsHV:function(n,t){return n(t)},wvczB:function(n,t){return n*t},ZiNXQ:function(n,t){return n*t},ElRHm:function(n,t){return n/t},ROHuL:function(n,t){return n(t)},xrIiZ:function(n,t){return n+t},UJlgr:function(n,t){return n+t},DJVts:function(n,t){return n*t},gwirX:function(n,t){return n(t)},ylJhK:function(n,t){return n(t)},inRqc:function(n,t){return n+t},TdTiq:function(n,t){return n+t},VDedU:function(n,t){return n(t)},AxsKH:function(n,t){return n(t)},agBgO:function(n,t){return n+t},pwxPx:function(n,t){return n+t},nbjDU:function(n,t){return n*t},qmtom:function(n,t){return n*t},YzRLc:function(n,t){return n(t)},DArAX:function(n,t){return n(t)},rAziI:function(n,t){return n+t},mrvpF:function(n,t){return n*t},mkUKS:function(n,t){return n/t},dLXaE:function(n,t){return n+t},jlIow:function(n,t){return n/t},tWusD:function(n,t){return n(t)},LXypI:function(n,t){return n+t},dMyLX:function(n,t){return n/t},vzXTY:function(n,t){return n(t)},LBhov:function(n,t){return n(t)},YUPIy:function(n,t){return n*t},VmYNT:function(n,t){return n*t},ECuyj:function(n,t){return n===t},fHDrw:t(295),DTLXU:t(181)},u=_0x381f,e=r[t(226)](n);;)try{var i=r[t(275)](r[t(275)](r[t(196)](r[t(298)](r[t(199)](r[t(196)](r[t(222)](r[t(271)](r[t(294)](parseInt,r[t(191)](u,494)),r[t(199)](r[t(199)](r[t(367)](-23,67),r[t(222)](-1,7497)),9039)),r[t(324)](-r[t(284)](parseInt,r[t(294)](u,514)),r[t(275)](r[t(199)](6946,r[t(367)](65,37)),r[t(214)](9349,-1)))),r[t(222)](r[t(324)](-r[t(325)](parseInt,r[t(284)](u,490)),r[t(199)](r[t(298)](1288,r[t(256)](-5737,1)),r[t(231)](-1113,-4))),r[t(227)](r[t(284)](parseInt,r[t(218)](u,523)),r[t(180)](r[t(299)](4454,r[t(329)](-22,65)),-3020)))),r[t(227)](r[t(360)](parseInt,r[t(279)](u,522)),r[t(186)](r[t(291)](8302,-853),r[t(222)](-7444,1)))),r[t(227)](r[t(204)](parseInt,r[t(272)](u,521)),r[t(211)](r[t(336)](r[t(256)](8,415),r[t(256)](7,128)),r[t(188)](1,-4210)))),r[t(201)](r[t(324)](r[t(312)](parseInt,r[t(285)](u,489)),r[t(291)](r[t(298)](-9653,7095),2565)),r[t(271)](r[t(204)](parseInt,r[t(218)](u,498)),r[t(291)](r[t(276)](r[t(329)](3381,-1),r[t(345)](-3,1621)),r[t(367)](2063,4))))),r[t(345)](r[t(265)](-r[t(218)](parseInt,r[t(285)](u,488)),r[t(276)](r[t(217)](-6268,r[t(214)](1929,-5)),r[t(329)](838,19))),r[t(249)](r[t(248)](parseInt,r[t(218)](u,479)),r[t(196)](r[t(352)](r[t(345)](1,-1103),r[t(188)](10,-718)),r[t(345)](-1,-8293))))),r[t(225)](r[t(197)](parseInt,r[t(220)](u,500)),r[t(291)](r[t(336)](r[t(344)](-3847,-1),r[t(328)](109,39)),-8087)));if(r[t(251)](i,973111))break;e[r[t(235)]](e[r[t(355)]]())}catch(n){e[r[t(235)]](e[r[t(355)]]())}}(_0x73a0);const{izumi,mode,getJson,getBuffer,PREFIX,toAudio,toPTT,toVideo,ffmpeg,isAdmin,parsedJid,isNumber,getRandom,qrcode,isIgUrl,imageToWebp,videoToWebp,writeExifImg,writeExifVid,writeExifWebp,parsedUrl,isUrl,jsonFormat,formatTime,getFile,sleep,serialize,Imgur,numToJid,sudoIds,postJson,Imgbb}=require(_0x164e9b(485)),util=require(_0x164e9b(493)),{StoreDB,getstore,storeWriteToDB,saveMessage,loadMessage,saveChat,getName}=require(_0x164e9b(506)+_0x164e9b(501)+"e"),config=require(_0x164e9b(505));function _0x3fac(){const n=["ElRHm","reply","QchSD","ZLpaL","ZiNXQ","zuyOm","785660bHPIhE","vCwHB","fHDrw","ZjcKx","YpMaK","yxqdo","cMTgY","(async () ","31269nqVhP","OJUPl","japsT","unfKn","zWrFY","IhNad","text","tWusD","jlIow","send","ECuyj","hXCgk","tkpwa","ioAxh","> ?(.*)","wvczB","IRAVH","uHFri","Ccwba","zljDF","666NMmUnG","lUNow","bjxjB","value","mkUKS","misc","LzWgf","JHuuH","bKbVi","RyvGe","NpVnb","AxsKH","HkRSl","inspect","AYAGR","rAziI","cDIBn","AShvr","ylJhK","e (evel)","stringify","95330FgMvX","iIDXC","andBr","DArAX","EuQKs","MoSlY","vtQSb","XOGWz","PjQKu","TdTiq","../lib/","hlQRF","zLKuK","push","331acRJXk","IKJao","YTBqp","UJlgr","Ciqmm","mPtXy","Equlj","VnxQq","saYPq","FbWAG","NxBmO","198KvkuaL","kukeV","aUeBC","jsABg","oMNPk","YzRLc","format","WzDpx","PlhpZ","25970qKBZC","6876340vWImxM","twpdG","aHWIR","1667219sOj","2GyuDZA","../lib/dat","abase/stor","AJGnu","CjsHV","KZpWO","UMU","VmYNT","DJVts","6vUqqbJ","urpdG","3752248DBesgD","GQGqR","4663170KViDLZ","YJasE","pwxPx","7gAxtwv","14103708RKLCJX","mPlYl","iykaL","cBJtZ","util","=> { ","YUPIy","mrvpF","9FNrlwa","fSrWK","48017937HB","oIkcq","ZFnzy","YHVwj","LXypI","AYcAg","dRDEa","DTLXU","702090qNdv","iJmtG","iOjSi","message","gwirX","cObCe","ctRuH","xpesC","fFnQC","oVeRj","replace","kcmHs","ZNmtO","WUKI","xrIiZ","shift","LAbQO","Run js cod","1869475owJdcr","8krNSPi","inRqc","11oVQsiV","nbjDU","mMiUg","yzSoQ","VKxuX"," })()","No return ","startsWith","oGdvI","ZqJfO","vzXTY","usHyd","BACbx","DdBVU","qmtom","apkgB","UfiDt","VDedU","800502EUuO","aokWB","688TYtHYZ","aebMa","njlth","../config","agBgO","fDArT","NEnMo","jaRgD","jgbQL","QlPuA","dLXaE","ROHuL","dSgeY","LBhov","client","BEVIK","uVRYc","string","dMyLX","uWlHT"];return(_0x3fac=function(){return n})()}izumi({pattern:_0x164e9b(492),fromMe:!0,dontAddCommandList:!0,desc:_0x164e9b(478)+_0x164e9b(515),type:_0x164e9b(517)},async(n,t,r)=>{}),izumi({on:_0x164e9b(504),fromMe:!0,dontAddCommandList:!0,desc:_0x164e9b(478)+_0x164e9b(515),type:_0x164e9b(517)},async(t,n,r)=>{const u=_0x18c8,e={oVeRj:function(n,t){return n(t)},zljDF:function(n,t){return n!==t},iOjSi:function(n,t){return n(t)},yxqdo:function(n,t){return n(t)},DdBVU:function(n,t){return n+t},fSrWK:function(n,t){return n(t)},cObCe:function(n,t){return n(t)},ZFnzy:function(n,t){return n(t)},ioAxh:function(n,t){return n(t)}},i=_0x164e9b,o={twpdG:function(n,t){var r=_0x18c8;return e[r(365)](n,t)},usHyd:function(n,t){var r=_0x18c8;return e[r(260)](n,t)},AYcAg:e[u(365)](i,499),dRDEa:function(n,t){var r=u;return e[r(365)](n,t)},ZLpaL:e[u(358)](i,493)};if(t[e[u(238)](i,480)][e[u(358)](i,481)](">"))try{let n=await o[e[u(238)](i,484)](eval,e[u(200)]("",t[e[u(358)](i,480)][e[u(365)](i,495)](">","")));o[e[u(365)](i,487)](typeof n,o[e[u(347)](i,497)])&&(n=o[e[u(361)](i,496)](require,o[e[u(361)](i,513)])[e[u(347)](i,507)](n)),await t[e[u(238)](i,516)](n)}catch(n){await t[e[u(350)](i,516)](util[e[u(254)](i,486)](n))}}),izumi({on:_0x164e9b(504),fromMe:!0,dontAddCommandList:!0},async(t,n,r)=>{const u=_0x18c8,e={UfiDt:function(n,t){return n(t)},oIkcq:function(n,t){return n!==t},YHVwj:function(n,t){return n||t},QchSD:function(n,t){return n(t)},saYPq:function(n,t){return n(t)},XOGWz:function(n,t){return n+t},AShvr:function(n,t){return n(t)},xpesC:function(n,t){return n(t)},fFnQC:function(n,t){return n(t)},iJmtG:function(n,t){return n+t},EuQKs:function(n,t){return n+t},mPlYl:function(n,t){return n(t)},tkpwa:function(n,t){return n(t)},WzDpx:function(n,t){return n(t)},zWrFY:function(n,t){return n(t)},cBJtZ:function(n,t){return n(t)},LzWgf:function(n,t){return n(t)}},i=_0x164e9b,o={oMNPk:function(n,t){var r=_0x18c8;return e[r(203)](n,t)},yzSoQ:e[u(229)](i,493),dSgeY:function(n,t){var r=u;return e[r(349)](n,t)},IhNad:e[u(304)](i,499),aokWB:function(n,t){var r=u;return e[r(351)](n,t)},ZNmtO:e[u(289)](e[u(278)](i,491),e[u(229)](i,524))};if(t[e[u(229)](i,480)][e[u(229)](i,481)]("$")){t[e[u(363)](i,511)];var c=o[e[u(364)](i,482)](require,o[e[u(229)](i,518)]);try{let n=await o[e[u(363)](i,482)](eval,e[u(357)](e[u(289)](e[u(286)](e[u(339)](i,503),e[u(229)](i,512)),t[e[u(364)](i,480)][e[u(253)](i,495)]("$","")),e[u(363)](i,519)));(n=n&&o[e[u(314)](i,483)](typeof n,o[e[u(314)](i,509)])?c[e[u(245)](i,507)](n):n)&&await t[e[u(364)](i,520)](o[e[u(341)](i,502)](n,o[e[u(314)](i,508)]))}catch(n){n&&await t[e[u(278)](i,520)](c[e[u(267)](i,486)](n))}}});
+const {
+	izumi,
+	mode,
+	getJson,
+	getBuffer,
+	PREFIX,
+	toAudio,
+	toPTT,
+	toVideo,
+	ffmpeg,
+	isAdmin,
+	parsedJid,
+	isNumber,
+	getRandom,
+	qrcode,
+	isIgUrl,
+	imageToWebp,
+	videoToWebp,
+	writeExifImg,
+	writeExifVid,
+	writeExifWebp,
+	parsedUrl,
+	isUrl,
+	jsonFormat,
+	formatTime,
+	getFile,
+	sleep,
+	serialize,
+	Imgur,
+	numToJid,
+	sudoIds,
+	postJson,
+	Imgbb
+} = require("../lib/");
+const util = require('util');
+const {     StoreDB,
+    getstore,
+    storeWriteToDB,
+      saveMessage,
+  loadMessage,
+  saveChat,
+  getName } = require("../lib/database/store");
+const config = require ('../config')
+izumi({pattern: '> ?(.*)', fromMe: true,dontAddCommandList: true, desc: 'Run js code (evel)', type: 'misc'}, async (message, match, client) => {return});
+izumi({on: 'text', fromMe: true, dontAddCommandList: true,desc: 'Run js code (evel)', type: 'misc'}, async (message, match, client) => {
+if(message.message.startsWith(">")){
+const m = message;
+try {
+let evaled = await eval(`${message.message.replace(">","")}`) 
+if (typeof evaled !== 'string') evaled = require('util').inspect(evaled); 
+await message.reply(evaled) 
+} catch (err) {
+await message.reply(util.format(err))
+}}
+})
+
+izumi({on:'text', fromMe: true,dontAddCommandList: true}, async (message, match, client) => {
+if (message.message.startsWith("$")) {
+var m = message
+var conn = message.client
+const util = require('util')
+const json = (x) => JSON.stringify(x,null,2)
+try { let return_val = await eval(`(async () => { ${message.message.replace("$","")} })()`)
+if (return_val && typeof return_val !== 'string') return_val = util.inspect(return_val)
+if (return_val) await message.send(return_val || "No return value")} catch (e) {
+if (e) await message.send(util.format(e))}
+}
+})
