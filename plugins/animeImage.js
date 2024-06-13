@@ -36,5 +36,5 @@ izumi({
   desc: "Random anime images",
   type: "AnimeImage",
 }, async (message, match) => {
-  await message.sendFromUrl('https://api.maskser.me/api/anime/loli?apikey=izumi-v3',{caption: `${config.CAPTION}`});
+  await message.sendFromUrl(apiUrl + 'api/anime/loli?apikey=izumi-v3',{caption: `${config.CAPTION}`});
 });
