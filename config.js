@@ -33,7 +33,7 @@ module.exports = {
   SUDO: process.env.SUDO || null,
   LANG: process.env.LANGUAGE === undefined ? 'EN' : process.env.LANGUAGE.toUpperCase(),
   STICKER_PACKNAME: process.env.STICKER_PACKNAME || "Izumi-v3,❤️",
-  AUDIO_DATA: process.env.AUDIO_DATA || "Mask-ser;Mask-md;https://i.imgur.com/cO0TZJv.jpeg",
+  AUDIO_DATA: process.env.AUDIO_DATA || "Eʏᴘᴢ;Iᴢᴜᴍɪ-ᴠ3;https://i.imgur.com/cO0TZJv.jpeg",
   PROCESSNAME: process.env.PROCESSNAME || "Izumi-v3",
   AUTHOR: process.env.AUTHOR || "Eypz God",
   DELETED_LOG_CHAT: process.env.DELETED_LOG_CHAT || false,
