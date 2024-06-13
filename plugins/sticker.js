@@ -4,7 +4,7 @@ const fs = require("fs");
 
 izumi(
   {
-    pattern: "sticker",
+    pattern: "sticker$",
     fromMe: mode,
     desc: "Converts Photo/video/text to sticker",
     type: "converter",

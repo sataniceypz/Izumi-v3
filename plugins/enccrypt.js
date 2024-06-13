@@ -80,7 +80,7 @@ data.value = {
 data.code = message.reply_message.text
 const axios = require("axios");
 var clientServerOptions = {
-url: 'https://api.maskser.me/api/javascript-obfuscator',
+url: apiUrl + 'api/javascript-obfuscator',
 data: JSON.stringify(data),
 method: 'POST',
 headers: {'Content-Type': 'application/json'}
