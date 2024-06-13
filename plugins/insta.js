@@ -21,7 +21,7 @@ izumi(
         await message.sendFile(url);
       });
     } catch (e) {
-      await message.sendMessage(message.jid, "Error: " + e);
+      await message.sendMessage(message.jid, "* Download failed,Private account/nor invalid link!");
     }
   }
 );
