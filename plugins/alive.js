@@ -1,16 +1,43 @@
 const { izumi, mode,formatTime } = require('../lib/');
-
+const config = require("../config");
  izumi({
-	pattern: 'ping$',
-	fromMe: mode,
-	desc: 'Bot response in second.',
-	type: 'info'
+    pattern: "ping",
+    fromMe: false,
+    desc: "Bot response in second.",
+    type: "info",
 }, async (message, match, client) => {
-	var start = new Date().getTime();
-	var msg = await message.reply('*Pinging...*');
-	var end = new Date().getTime();
-	var responseTime = end - start;
-	await msg.edit(`*Pong!*\nLatency: ${responseTime}ms`);
+    let thumbnail = 'https://i.im.ge/2024/05/23/KdOx1z.alexa.png';
+    let vcardMessage = {
+        key: { fromMe: false, participant: `0@s.whatsapp.net`, remoteJid: 'status@broadcast' },
+        message: {
+            contactMessage: {
+                displayName: config.BOT_NAME,
+                vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:Izumi-v3\nitem1.TEL;waid=${message.sender.split('@')[0]}:${message.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,
+            },
+        },
+    };
+    
+    const start = new Date().getTime();
+    
+    // Send the initial "Pinging..." message
+    let pingMsg = await client.sendMessage(message.jid, { text: 'Pinging...' }, { quoted: vcardMessage });
+
+    const end = new Date().getTime();
+    const ms = end - start;
+
+    await client.relayMessage(
+        message.jid,
+        {
+            protocolMessage: {
+                key: pingMsg.key,
+                type: 14,
+                editedMessage: {
+                    conversation: `Pong ${ms}ms`,
+                },
+            },
+        },
+        {}
+    );
 });
 
 izumi({
