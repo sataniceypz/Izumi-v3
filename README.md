@@ -28,6 +28,46 @@
     ```
    pkg update && pkg install -y nodejs git && git clone https://github.com/mask-sir/izumi-qr.git && cd izumi-qr && npm install && node index.js
    ```
+### RUN ON VPS/TERMUX
+
+1. Install packages
+   ```
+   apt update && apt upgrade -y && pkg install wget openssl-tool proot -y && hash -r && wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/Ubuntu/ubuntu.sh && bash ubuntu.sh
+   apt update && apt upgrade
+   apt install sudo
+   sudo apt install ffmpeg
+   sudo apt install imagemagick
+   sudo apt install yarn
+   sudo apt install git
+   sudo apt install curl
+   sudo apt -y remove nodejs
+   curl -fsSl https://deb.nodesource.com/setup_lts.x | sudo bash - && sudo apt -y install nodejs
+   ```
+2. installation
+   ```
+   git clone https://github.com/sataniceypz/Izumi-v3
+   cd Izumi-v3
+4. Configuration
+   ```
+   echo "TERMUX = true
+   SESSION_ID = izumi~NJrnzJyS
+   PREFIX = .
+   READ_MSG = false
+   ALWAYS_ONLINE = false
+   REJECT_CALL = false
+   LOG_MSG = true
+   SUDO = 917994489493
+   AUTO_STATUS_VIEW = true" > config.env
+   ```
+- Start
+  ```
+  npm install
+  npm start
+  ```
+- Stop
+  ```
+  pm2 delete izumi-v3
+    
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 
 #### THANKS TO
