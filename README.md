@@ -45,6 +45,7 @@
    ```
 2. installation
    ```
+   ./start-ubuntu.sh
    git clone https://github.com/sataniceypz/Izumi-v3
    cd Izumi-v3
 4. Configuration
