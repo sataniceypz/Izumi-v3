@@ -66,7 +66,7 @@
   ```
 - Stop
   ```
-  pm2 delete izumi-v3
+  pm2 delete izumi
     
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 
