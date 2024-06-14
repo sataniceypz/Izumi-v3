@@ -2,7 +2,7 @@ const { izumi, mode,formatTime } = require('../lib/');
 const config = require("../config");
  izumi({
     pattern: "ping",
-    fromMe: false,
+    fromMe: mode,
     desc: "Bot response in second.",
     type: "info",
 }, async (message, match, client) => {
