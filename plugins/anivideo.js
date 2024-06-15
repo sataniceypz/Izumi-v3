@@ -6,8 +6,20 @@ izumi ({
     desc: "random Naruto anime videos",
     type: "AnimeVideo",
 }, async (message, match) => {
-const { result } = await getJson(apiUrl + 'api/anime/naruto?apikey=izumi-v3')
-message.sendFromUrl(result.url,{caption: `${config.CAPTION}`})
+  const { result } = await getJson(apiUrl + 'api/anime/naruto?apikey=izumi-v3');
+  message.sendFromUrl(result.url, {
+    contextInfo: {
+      mentionedJid: [message.sender],
+      forwardingScore: 1,
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+        newsletterJid: '120363298577467093@newsletter',
+        newsletterName: "Iᴢᴜᴍɪ-ᴠ3",
+        serverMessageId: -1
+      }
+    },
+    caption: `${config.CAPTION}`
+  });
 });
 
 izumi ({
@@ -16,8 +28,20 @@ izumi ({
     desc: "random  anime videos",
     type: "AnimeVideo",
 }, async (message, match) => {
-const { result } = await getJson(apiUrl + 'api/anime/anivideo?apikey=izumi-v3')
-message.sendFromUrl(result.url,{caption: `${config.CAPTION}`})
+const { result } = await getJson(apiUrl + 'api/anime/anivideo?apikey=izumi-v3');
+  message.sendFromUrl(result.url, {
+    contextInfo: {
+      mentionedJid: [m.sender],
+      forwardingScore: 1,
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+        newsletterJid: '120363298577467093@newsletter',
+        newsletterName: "Iᴢᴜᴍɪ-ᴠ3",
+        serverMessageId: -1
+      }
+    },
+    caption: `${config.CAPTION}`
+  });
 });
  izumi ({
     pattern: "mstatus",
@@ -26,5 +50,17 @@ message.sendFromUrl(result.url,{caption: `${config.CAPTION}`})
     type: "media",
 }, async (message, match) => {
 const { result } = await getJson(apiUrl + 'api/randomvideo/msts?apikey=izumi-v3')
-message.sendFromUrl(result.video,{caption: `${config.CAPTION}`})
+  message.sendFromUrl(result.url, {
+    contextInfo: {
+      mentionedJid: [m.sender],
+      forwardingScore: 1,
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+        newsletterJid: '120363298577467093@newsletter',
+        newsletterName: "Iᴢᴜᴍɪ-ᴠ3",
+        serverMessageId: -1
+      }
+    },
+    caption: `${config.CAPTION}`
+  });
 });
