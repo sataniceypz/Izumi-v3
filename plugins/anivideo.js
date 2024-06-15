@@ -31,7 +31,7 @@ izumi ({
 const { result } = await getJson(apiUrl + 'api/anime/anivideo?apikey=izumi-v3');
   message.sendFromUrl(result.url, {
     contextInfo: {
-      mentionedJid: [m.sender],
+      mentionedJid: [message.sender],
       forwardingScore: 1,
       isForwarded: true,
       forwardedNewsletterMessageInfo: {
@@ -52,7 +52,7 @@ const { result } = await getJson(apiUrl + 'api/anime/anivideo?apikey=izumi-v3');
 const { result } = await getJson(apiUrl + 'api/randomvideo/msts?apikey=izumi-v3')
   message.sendFromUrl(result.url, {
     contextInfo: {
-      mentionedJid: [m.sender],
+      mentionedJid: [message.sender],
       forwardingScore: 1,
       isForwarded: true,
       forwardedNewsletterMessageInfo: {
