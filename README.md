@@ -33,6 +33,7 @@
 1. Install packages
    ```
    apt update && apt upgrade -y && pkg install wget openssl-tool proot -y && hash -r && wget https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Scripts/Installer/Ubuntu/ubuntu.sh && bash ubuntu.sh
+   ./start-ubuntu.sh
    apt update && apt upgrade
    apt install sudo
    sudo apt install ffmpeg
@@ -45,7 +46,6 @@
    ```
 2. installation
    ```
-   ./start-ubuntu.sh
    git clone https://github.com/sataniceypz/Izumi-v3
    cd Izumi-v3
 4. Configuration
