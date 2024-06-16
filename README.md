@@ -11,13 +11,23 @@
    <br>
 <a href='https://github.com/sataniceypz/Izumi-V3/fork' target="_blank"><img alt='FORK' src='https://img.shields.io/badge/fork-100000?style=for-the-badge&logo=github&logoColor=white&labelColor=black&color=black'/></a>
 
-3. Create account on Heroku
+### Heroku
+1. Create account on Heroku
    <br>
 <a href='https://signup.heroku.com/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Create-black?style=for-the-badge&logo=heroku&logoColor=white'/></a>
 
-4. Deploy on Heroku
+2. Deploy on Heroku
    <br>
 <a href='https://izumi-deploy.vercel.app/' target="_blank"><img alt='Deploy' src='https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=heroku&logoColor=white'/></a>
+
+### Render
+1. Create account on Render
+   <br>
+<a href='https://render.com' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Create-black?style=for-the-badge&logo=Render&logoColor=white'/></a>
+
+2. Deploy on Render
+   <br>
+<a href='https://dashboard.render.com/blueprint/new?repo=https://github.com/sataniceypz/Izumi-v3' target="_blank"><img alt='Deploy' src='https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=Render&logoColor=white'/></a>
 
 ### For getting session in Indian number
 1.  Termux
