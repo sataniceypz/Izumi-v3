@@ -11,7 +11,7 @@ services:
     envVars:
       - key: SESSION_ID
         sync: false
-      - key: WORK_TYPE
+      - key: MODE
         value: private
       - key: SERVER
         value: render
