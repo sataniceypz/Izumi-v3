@@ -12,10 +12,10 @@ services:
       - key: SESSION_ID
         sync: false
       - key: MODE
-        value: private
+        sync: false
       - key: SERVER
         value: render
-      - key: CAPTION
-        value: 𝗜𝗭𝗨𝗠𝗜-𝗫𝗗
+      - key: MENU_URL
+        sync: false
       - key: SUDO
-        value: 917994489493
+        sync: false
