@@ -1,12 +1,14 @@
 const got = require("got");
 const Heroku = require("heroku-client");
-const { izumi,secondsToDHMS } = require("../lib/");
+const { izumi, secondsToDHMS } = require("../lib/");
 const Config = require("../config");
 const heroku = new Heroku({ token: Config.HEROKU_API_KEY });
 const baseURI = "/apps/" + Config.HEROKU_APP_NAME;
 const simpleGit = require("simple-git");
 const git = simpleGit();
 const exec = require("child_process").exec;
+const fs = require("fs");
+
 izumi(
   {
     pattern: "restart$",
@@ -21,6 +23,7 @@ izumi(
     });
   }
 );
+
 izumi(
   {
     pattern: "shutdown$",
@@ -44,6 +47,7 @@ izumi(
       });
   }
 );
+
 izumi(
   {
     pattern: "dyno$",
@@ -52,12 +56,15 @@ izumi(
     type: "heroku",
   },
   async (message) => {
+    if (Config.TERMUX) {
+      return;
+    }
     try {
       heroku
         .get("/account")
         .then(async (account) => {
           const url = `https://api.heroku.com/accounts/${account.id}/actions/get-quota`;
-          headers = {
+          const headers = {
             "User-Agent": "Chrome/80.0.3987.149 Mobile Safari/537.36",
             Authorization: "Bearer " + Config.HEROKU_API_KEY,
             Accept: "application/vnd.heroku+json; version=3.account-quotas",
@@ -80,6 +87,7 @@ Remaning    : ${secondsToDHMS(remaining)}`;
     }
   }
 );
+
 izumi(
   {
     pattern: "setvar ?(.*)",
@@ -88,18 +96,53 @@ izumi(
     type: "heroku",
   },
   async (message, text) => {
-if (text === '') return await message.send('```Either Key or Value is missing```')
-	if ((varKey = text.split(':')[0]) && (varValue = text.replace(text.split(':')[0] + ":", ""))) {
-		await heroku.patch(baseURI + '/config-vars', {
-			body: {
-				[varKey.toUpperCase()]: varValue
-			}
-		}).then(async () => {
-			await message.send('Successfully Set ' + '```' + varKey + '➜' + varValue + '```')
-		}).catch(async (error) => {
-			await message.send(`HEROKU : ${error.body.message}`)
-		})
-	}
+    if (Config.HEROKU) {
+      if (text === '') return await message.send('```Either Key or Value is missing```');
+      if ((varKey = text.split(':')[0]) && (varValue = text.replace(text.split(':')[0] + ":", ""))) {
+        await heroku.patch(baseURI + '/config-vars', {
+          body: {
+            [varKey.toUpperCase()]: varValue
+          }
+        }).then(async () => {
+          await message.send('Successfully Set ' + '```' + varKey + '➜' + varValue + '```');
+        }).catch(async (error) => {
+          await message.send(`HEROKU : ${error.body.message}`);
+        });
+      }
+    } else if (Config.TERMUX) {
+      if (!text.match(/^[^=:]+[=:]/)) {
+        return await message.send('*Invalid match format.*\n_Please use the format *KEY:VALUE* or *KEY=VALUE*_');
+      }
+
+      let parts = text.split(/[=:]/);
+      let key = parts[0].trim();
+      let value = parts.slice(1).join('').trim();
+
+      if (!value) {
+        return await message.send('Please specify a new value');
+      }
+
+      let data = await fs.readFileSync('config.env', 'utf8');
+      let lines = data.split('\n');
+      let obj = {};
+
+      lines.forEach(line => {
+        let parts = line.split(/[=:]/);
+        let k = parts[0].trim();
+        let v = parts.slice(1).join('').trim();
+        obj[k] = v;
+      });
+
+      obj[key] = value;
+      let updatedData = Object.entries(obj).map(([k, v]) => `${k} = ${v}`).join('\n');
+
+      await fs.writeFileSync('config.env', updatedData, 'utf8');
+      await require('dotenv').config({ path: './config.env', override: true });
+
+      await message.send(`_Updated *${key}* with value *${value}* in config.env file_`);
+      await message.reply("_bot restarting wait for 30 seconds_");
+      return require('pm2').restart('index.js');
+    }
   }
 );
 
@@ -112,23 +155,42 @@ izumi(
   },
   async (message, match) => {
     if (!match) return await message.reply(`_Example: delvar sudo_`);
-    heroku
-      .get(baseURI + "/config-vars")
-      .then(async (vars) => {
-        const key = match.trim().toUpperCase();
-        if (vars[key]) {
-          await heroku.patch(baseURI + "/config-vars", {
-            body: {
-              [key]: null,
-            },
-          });
-          return await message.reply(`_Deleted ${key}_`);
-        }
-        await message.reply(`_${key} not found_`);
-      })
-      .catch(async (error) => {
-        await message.reply(`HEROKU : ${error.body.message}`);
-      });
+
+    if (Config.HEROKU) {
+      heroku
+        .get(baseURI + "/config-vars")
+        .then(async (vars) => {
+          const key = match.trim().toUpperCase();
+          if (vars[key]) {
+            await heroku.patch(baseURI + "/config-vars", {
+              body: {
+                [key]: null,
+              },
+            });
+            return await message.reply(`_Deleted ${key}_`);
+          }
+          await message.reply(`_${key} not found_`);
+        })
+        .catch(async (error) => {
+          await message.reply(`HEROKU : ${error.body.message}`);
+        });
+    } else if (Config.TERMUX) {
+      let data = await fs.readFileSync('config.env', 'utf8');
+      let lines = data.split('\n');
+      let key = match.trim().toUpperCase();
+      let newLines = lines.filter(line => !line.startsWith(key + '=') && !line.startsWith(key + ':'));
+
+      if (newLines.length === lines.length) {
+        return await message.send(`_Key *${key}* not found in config.env file_`);
+      }
+
+      await fs.writeFileSync('config.env', newLines.join('\n'), 'utf8');
+      await require('dotenv').config({ path: './config.env', override: true });
+
+      await message.send(`_Deleted *${key}* from config.env file_`);
+      await message.reply("_bot restarting wait for 30 seconds_");
+      return require('pm2').restart('index.js');
+    }
   }
 );
 izumi(
@@ -139,23 +201,50 @@ izumi(
     type: "heroku",
   },
   async (message, match) => {
-    if (!match) return await message.reply(`_Example: getvar sudo_`);
-    const key = match.trim().toUpperCase();
-    heroku
-      .get(baseURI + "/config-vars")
-      .then(async (vars) => {
-        if (vars[key]) {
-          return await message.send(
-            "_{} : {}_".replace("{}", key).replace("{}", vars[key])
-          );
-        }
-        await message.reply(`${key} not found`);
-      })
-      .catch(async (error) => {
-        await message.send(`HEROKU : ${error.body.message}`);
+    if (Config.HEROKU) {
+      if (!match) return await message.reply(`_Example: getvar sudo_`);
+      const key = match.trim().toUpperCase();
+      heroku
+        .get(baseURI + "/config-vars")
+        .then(async (vars) => {
+          if (vars[key]) {
+            return await message.send(
+              "_{} : {}_".replace("{}", key).replace("{}", vars[key])
+            );
+          }
+          await message.reply(`${key} not found`);
+        })
+        .catch(async (error) => {
+          await message.send(`HEROKU : ${error.body.message}`);
+        });
+    } else if (Config.TERMUX) {
+      if (!match) {
+        return await message.send('*Please specify a key*');
+      }
+
+      let data = await fs.readFileSync('config.env', 'utf8');
+      let lines = data.split('\n');
+      let obj = {};
+
+      lines.forEach(line => {
+        let parts = line.split(/[=:]/);
+        let k = parts[0].trim();
+        let v = parts.slice(1).join('').trim();
+        obj[k] = v;
       });
+
+      match = match.toUpperCase();
+      let value = obj[match];
+
+      if (!value) {
+        return await message.send(`_Key *${match}* not found in config.env file_`);
+      }
+
+      return await message.send(`_${match}:${value}_`);
+    }
   }
 );
+
 izumi(
   {
     pattern: "allvar$",
@@ -164,20 +253,38 @@ izumi(
     type: "heroku",
   },
   async (message) => {
-    let msg = "```Here your all Heroku vars\n\n\n";
-    heroku
-      .get(baseURI + "/config-vars")
-      .then(async (keys) => {
-        for (const key in keys) {
-          msg += `${key} : ${keys[key]}\n\n`;
-        }
-        return await message.reply(msg + "```");
-      })
-      .catch(async (error) => {
-        await message.reply(`HEROKU : ${error.body.message}`);
+    if (Config.HEROKU) {
+      let msg = "```Here your all Heroku vars\n\n\n";
+      heroku
+        .get(baseURI + "/config-vars")
+        .then(async (keys) => {
+          for (const key in keys) {
+            msg += `${key} : ${keys[key]}\n\n`;
+          }
+          return await message.reply(msg + "```");
+        })
+        .catch(async (error) => {
+          await message.reply(`HEROKU : ${error.body.message}`);
+        });
+    } else if (Config.TERMUX) {
+      let data = await fs.readFileSync('config.env', 'utf8');
+      let lines = data.split('\n');
+      let obj = {};
+
+      lines.forEach(line => {
+        let parts = line.split(/[=:]/);
+        let k = parts[0].trim();
+        let v = parts.slice(1).join('').trim();
+        obj[k] = v;
       });
+
+      let str = Object.entries(obj).map(([k, v]) => `${k} = ${v}`).join('\n');
+      return await message.send(`*All config vars:*\n${str}`);
+    }
   }
 );
+
+
 izumi(
   {
     pattern: "update$",
