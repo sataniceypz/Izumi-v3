@@ -11,9 +11,5 @@ services:
     envVars:
       - key: SESSION_ID
         sync: false
-      - key: MODE
-        value: private
-      - key: SERVER
-        value: render
-      - key: CAPTION
-        value: Izumi-v3 
+      - key: DATABASE_URL
+        sync: false
