@@ -205,4 +205,65 @@ izumi({
             mentions: jids
         });
 
-    });
+    }); 
+    izumi(
+  {
+    pattern: 'invite ?(.*)',
+    fromMe: true,
+    desc: 'Get Group invite',
+    type: 'group',
+    onlyGroup: true,
+  },
+  async (message, match) => {
+    const participants = await message.groupMetadata(message.jid)
+    const isImAdmin = await message.isAdmin(message.user)
+    if (!isImAdmin) return await message.reply(`_I'm not admin._`)
+    return await message.reply(await message.invite(message.jid))
+  }
+);
+izumi(
+  {
+    pattern: 'join ?(.*)',
+    fromMe: true,
+    type: 'group',
+    desc: 'Join invite link.',
+  },
+  async (message, match) => {
+    match = match || message.reply_message.text
+    if (!match)
+      return await message.reply(`_Give me a Group invite link._`)
+    const wa = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/
+    const [_, code] = match.match(wa) || []
+    if (!code)
+      return await message.sendMessage(`_Give me a Group invite link._`)
+    await message.accept(code)
+    return await message.reply(`_Joined_`)
+  }
+);
+izumi(
+  {
+    pattern: 'revoke',
+    fromMe: true,
+    onlyGroup: true,
+    type: 'group',
+    desc: 'Revoke Group invite link.',
+  },
+  async (message, match) => {
+  const isadmin = message.isAdmin(message.user);
+    if (!isadmin) return await message.reply(`_I'm not admin._`)
+    await message.revoke(message.jid)
+  }
+)
+ izumi(
+  {
+    pattern: 'left ?(.*)',
+    fromMe: true,
+    dec: 'To leave from group',
+    type: 'user',
+    onlyGroup: true,
+  },
+  async (message, match) => {
+    if (match) await message.send(match)
+    return await message.left(message.jid)
+  }
+);
