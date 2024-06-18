@@ -64,3 +64,24 @@ const { result } = await getJson(apiUrl + 'api/randomvideo/msts?apikey=izumi-v3'
     caption: `${config.CAPTION}`
   });
 });
+izumi ({
+    pattern: "onepiece",
+    fromMe: mode,
+    desc: "random one-piece anime status ",
+    type: "AnimeVideo",
+}, async (message, match) => {
+const url = apiUrl + 'api/anime/onepiece?apikey=izumi-v3'
+  message.sendFromUrl(url, {
+    contextInfo: {
+      mentionedJid: [message.sender],
+      forwardingScore: 1,
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+        newsletterJid: '120363298577467093@newsletter',
+        newsletterName: "Iᴢᴜᴍɪ-ᴠ3",
+        serverMessageId: -1
+      }
+    },
+    caption: `${config.CAPTION}`
+  });
+});
