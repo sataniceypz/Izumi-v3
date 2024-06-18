@@ -55,4 +55,17 @@ izumi({
 	type: 'info'
 }, async (message, match, client) => {
 	await message.reply(formatTime(process.uptime()));
-})
+});
+izumi(
+	{
+		pattern: 'save ?(.*)',
+		fromMe: true,
+		desc: 'forward replied msg to u',
+		type: 'misc',
+	},
+	async (message, match) => {
+		if (!message.reply_message)
+			return await message.send('*Reply to a message*');
+		await message.forwardMessage(message.user, message.quoted.data);
+	}
+);
