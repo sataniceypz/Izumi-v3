@@ -267,3 +267,20 @@ izumi(
     return await message.left(message.jid)
   }
 );
+izumi({
+    pattern: "mee",
+    fromMe: mode,
+    onlyGroup: false,
+    desc: "self tag",
+    type: "group",
+},
+async (message, match) => {
+    const {
+        participants
+    } = await message.groupMetadata(message.jid);
+    const senderId = message.sender.split('@')[0];
+    let teks = `@${senderId}\n`;
+    await message.sendMessage(message.jid, teks.trim(), {
+        mentions: [message.sender]
+    });
+});
