@@ -24,9 +24,8 @@
     "HEROKU_API_KEY": {
       "description": "Heroku account api key, https://dashboard.heroku.com/account",
       "required": "true"
-     }
- },
-     "MENU_URL": {
+    },
+    "MENU_URL": {
       "description": "Add Url of image or Video",
       "required": "false",
       "value": "https://i.imgur.com/8H2hM6D.jpeg"
