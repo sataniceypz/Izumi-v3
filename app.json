@@ -51,7 +51,7 @@
     },
        "CAPTION": {
        "description": "Enter youR Caption",
-       "required": "false"
+       "required": "false",
        "value" : ""
     },
         "PREFIX": {
