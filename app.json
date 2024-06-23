@@ -73,8 +73,9 @@
       "description": "bot work type",
       "required": "true",
       "value": "private"
-     },
- "addons": [{
+     }
+  },
+    "addons": [{
       "plan": "heroku-postgresql"
     }],
     "buildpacks": [{
