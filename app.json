@@ -1,6 +1,6 @@
 {
   "name": "Izumi-v3",
-  "description": "Izumi a Multi Device whatsapp bot",
+  "description": "Izumi a Multi Device WhatsApp bot",
   "logo": "https://i.imgur.com/Hgiamot.jpeg",
   "keywords": ["whatsapp"],
   "repository": "https://github.com/sataniceypz/Izumi-v3",
@@ -9,79 +9,84 @@
   "stack": "container",
   "env": {
     "SESSION_ID": {
-      "description": "enter your session id",
-      "required": "true"
+      "description": "Enter your session id",
+      "required": true
     },
-     "HEROKU": {
+    "HEROKU": {
       "description": "Don't change this",
       "required": true,
-       "value":"true"
-     },
+      "value": "true"
+    },
     "HEROKU_APP_NAME": {
       "description": "Heroku app name, same as above entered",
-      "required": "true"
+      "required": true
     },
     "HEROKU_API_KEY": {
-      "description": "Heroku account api key, https://dashboard.heroku.com/account",
-      "required": "true"
+      "description": "Heroku account API key, https://dashboard.heroku.com/account",
+      "required": true
     },
     "MENU_URL": {
-      "description": "Add Url of image or Video",
-      "required": "false",
+      "description": "Add URL of image or video",
+      "required": false,
       "value": "https://i.imgur.com/8H2hM6D.jpeg"
-     },
-     "BOT_NAME": {
-      "description": "enter your bot name",
-      "required": "false",
+    },
+    "BOT_NAME": {
+      "description": "Enter your bot name",
+      "required": false,
       "value": "Iᴢᴜᴍɪ-ᴍᴅ"
     },
-       "STICKER_PACKNAME": {
-      "description": "enter tou sticker pack name",
-      "required": "false",
+    "STICKER_PACKNAME": {
+      "description": "Enter your sticker pack name",
+      "required": false,
       "value": "Iᴢᴜᴍɪ-ᴍᴅ"
-    }, "AUDIO_DATA": {
-      "description": "enter your audio data(title,author,link)",
-      "required": "false",
-      "value": "enjoy this song,Iᴢᴜᴍɪ-v3,https://i.imgur.com/cO0TZJv.jpeg"
     },
-       "OWNER_NAME": {
-       "description": "Enter your name",
-       "required": "false",
-       "value": "Eʏᴘᴢ"
+    "AUDIO_DATA": {
+      "description": "Enter your audio data (title, author, link)",
+      "required": false,
+      "value": "enjoy this song, Iᴢᴜᴍɪ-v3, https://i.imgur.com/cO0TZJv.jpeg"
     },
-       "CAPTION": {
-       "description": "Enter youR Caption",
-       "required": "false",
-       "value" : ""
+    "OWNER_NAME": {
+      "description": "Enter your name",
+      "required": false,
+      "value": "Eʏᴘᴢ"
     },
-        "PREFIX": {
-       "description": "prefix for bot",
-       "required": "false",
-       "value": "."
+    "CAPTION": {
+      "description": "Enter your caption",
+      "required": false,
+      "value": ""
     },
-     "AUTHOR": {
-      "description": "enter sticker pack author name ",
-      "required": "false",
+    "PREFIX": {
+      "description": "Prefix for bot",
+      "required": false,
+      "value": "."
+    },
+    "AUTHOR": {
+      "description": "Enter sticker pack author name",
+      "required": false,
       "value": "Eypz"
     },
     "SUDO": {
-      "description": "add Sudo number",
-      "required": "false",
+      "description": "Add Sudo number",
+      "required": false,
       "value": "919876543210"
     },
     "MODE": {
-      "description": "bot work type",
-      "required": "true",
+      "description": "Bot work type",
+      "required": true,
       "value": "private"
-     }
+    }
   },
-    "addons": [{
+  "addons": [
+    {
       "plan": "heroku-postgresql"
-    }],
-    "buildpacks": [{
+    }
+  ],
+  "buildpacks": [
+    {
       "url": "heroku-community/apt"
-      },
-      {
+    },
+    {
       "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
-      }]
-  }
+    }
+  ]
+}
