@@ -59,13 +59,13 @@ izumi({
 izumi(
 	{
 		pattern: 'save ?(.*)',
-		fromMe: true,
+		fromMe: mode,
 		desc: 'forward replied msg to u',
 		type: 'misc',
 	},
 	async (message, match) => {
 		if (!message.reply_message)
 			return await message.send('*Reply to a message*');
-		await message.forwardMessage(message.user, message.quoted.data);
+		await message.forwardMessage(message.sender, message.quoted.data);
 	}
 );
