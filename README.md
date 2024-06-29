@@ -18,7 +18,7 @@
 
 2. Deploy on Heroku
    <br>
-<a href='https://izumi-web.vercel.app/deploy.html' target="_blank"><img alt='Deploy' src='https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=heroku&logoColor=white'/></a>
+<a href='https://api.maskser.me/deploy' target="_blank"><img alt='Deploy' src='https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=heroku&logoColor=white'/></a>
 
 ### Render
 1. Create account on Render
