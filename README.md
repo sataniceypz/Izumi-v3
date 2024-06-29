@@ -29,6 +29,12 @@
    <br>
 <a href='https://dashboard.render.com/blueprint/new?repo=https://github.com/sataniceypz/Izumi-v3' target="_blank"><img alt='Deploy' src='https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=Render&logoColor=white'/></a>
 
+3. Tutorial
+   <br>
+<a href="https://youtu.be/c9jQJK9rasU?si=Suz_JfA2TRmJSVVM"><img align="center" src="https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=Render&logoColor=white" /></a>
+ </p>
+ </br>
+ 
 ### For getting session in Indian number
 1.  Termux
     <br>
