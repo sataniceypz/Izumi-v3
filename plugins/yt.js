@@ -14,23 +14,66 @@ izumi(
   {
     pattern: "yta ?(.*)",
     fromMe: mode,
-    desc: "Download audio from youtube",
-     type: "downloader",
+    desc: "Download audio from YouTube",
+    type: "downloader",
   },
   async (message, match) => {
     match = match || message.reply_message.text;
-    if (!match) return await message.reply("Give me a youtube link");
-    if (!isUrl(match)) return await message.reply("Give me a youtube link");
-let link = await parsedUrl(match)
-    let { dlink, title } = await yta(link[0]);
+    if (!match) return await message.reply("Give me a YouTube link");
+    if (!isUrl(match)) return await message.reply("Give me a YouTube link");
+
+    let link = await parsedUrl(match);
+    let { dlink, title, vid } = await yta(link[0]);
     await message.reply(`_Downloading ${title}_`);
     let buff = await getBuffer(dlink);
+
+    let thumbnailUrl = `https://i.ytimg.com/vi/${vid}/0.jpg`;
+
+    let eypz = {
+      key: {
+        participant: "0@s.whatsapp.net",
+        remoteJid: "120363280001854361@g.us"
+      },
+      message: {
+        productMessage: {
+          product: {
+            productImage: {
+              mimetype: "image/jpeg",
+              jpegThumbnail: Buffer.alloc(0)
+            },
+            title: `${title}`, 
+            description: "izumi", 
+            currencyCode: "USD",
+            priceAmount1000: "100000000//000", 
+            retailerId: "Eypz",
+            productImageCount: 1
+          },
+          businessOwnerJid: "917994489493@s.whatsapp.net"
+        }
+      }
+    };
+
     return await message.sendMessage(
       message.jid,
       buff,
       {
         mimetype: "audio/mpeg",
-        filename: title + ".mp3",
+        waveform: [90, 20, 90, 20, 90, 20, 90],
+        fileLength: "1000000",
+        ptt: false,
+        quoted: eypz,
+        contextInfo: {
+          externalAdReply: {
+            title: "Izumi",
+            body: title,
+            sourceUrl: "https://github.com/sataniceypz/Izumi-v3",
+            mediaUrl: "https://github.com/sataniceypz/Izumi-v3",
+            mediaType: 1,
+            showAdAttribution: true,
+            renderLargerThumbnail: true,
+            thumbnailUrl: thumbnailUrl
+          }
+        }
       },
       "audio"
     );
