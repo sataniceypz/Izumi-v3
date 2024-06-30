@@ -1,3 +1,4 @@
+const config = require("../config");
 const {
   izumi,
   mode,
@@ -42,10 +43,10 @@ izumi(
               jpegThumbnail: Buffer.alloc(0)
             },
             title: `${title}`, 
-            description: "izumi", 
+            description: config.BOT_NAME, 
             currencyCode: "USD",
             priceAmount1000: "100000000//000", 
-            retailerId: "Eypz",
+            retailerId: config.OWNER_NAME,
             productImageCount: 1
           },
           businessOwnerJid: "917994489493@s.whatsapp.net"
