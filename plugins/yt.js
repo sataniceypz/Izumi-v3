@@ -65,7 +65,7 @@ izumi(
         quoted: eypz,
         contextInfo: {
           externalAdReply: {
-            title: "Izumi",
+            title: config.BOT_NAME,
             body: title,
             sourceUrl: "https://github.com/sataniceypz/Izumi-v3",
             mediaUrl: "https://github.com/sataniceypz/Izumi-v3",
