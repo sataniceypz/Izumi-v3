@@ -284,3 +284,84 @@ async (message, match) => {
         mentions: [message.sender]
     });
 });
+izumi(
+  {
+    pattern: "add ?(.*)",
+    fromMe: true,
+    desc: "Add a person to the group",
+    type: "group",
+  },
+  async (message, match) => {
+    if (!message.isGroup) {
+      return await message.reply("*_This command only works in group chats_*");
+    }
+
+    let num;
+
+    if (message.quoted) {
+      num = message.quoted.sender;
+    } else {
+      num = match;
+    }
+
+    if (!num) {
+      return await message.reply("*_Need a number/reply to a message!_*");
+    }
+
+    let user = num.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+    let admin = await isAdmin(message.jid, message.user, message.client);
+
+    if (!admin) {
+      return await message.reply("*_I'm not admin_*");
+    }
+
+    try {
+      await message.client.groupParticipantsUpdate(message.jid, [user], "add");
+      return await message.client.sendMessage(message.jid, {
+        text: `*_@${user.split("@")[0]}, Added to the Group!_*`,
+        mentions: [user],
+      });
+    } catch (error) {
+      return await message.reply("*_Failed to add the person to the group. Please check the number and try again._*");
+    }
+  }
+);
+izumi(
+  {
+    pattern: "kick ?(.*)",
+    fromMe: true,
+    desc: "Kick a person from the group",
+    type: "group",
+  },
+  async (message, match) => {
+    if (!message.isGroup) {
+      return await message.reply("*_This command only works in group chats_*");
+    }
+
+    let num = match || (message.quoted ? message.quoted.sender : null);
+
+    if (!num) {
+      return await message.reply("*_Need a number/reply/mention!_*");
+    }
+
+    num = num.replace(/[^0-9]/g, "") + "@s.whatsapp.net"; // Ensure num is in the correct format
+
+    let admin = await isAdmin(message.jid, message.user, message.client);
+
+    if (!admin) {
+      return await message.reply("*_I'm not admin_*");
+    }
+
+    try {
+      await message.client.groupParticipantsUpdate(message.jid, [num], "remove");
+      let userMention = `@${num.split("@")[0]}`;
+      return await message.client.sendMessage(message.jid, {
+        text: `*_ ${userMention}, Kicked from The Group!_*`,
+        mentions: [num],
+      });
+    } catch (error) {
+      console.error("Error kicking user:", error);
+      return await message.reply("*_Failed to kick the user_*");
+    }
+  }
+);
