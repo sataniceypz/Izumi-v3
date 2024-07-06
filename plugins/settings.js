@@ -126,7 +126,7 @@ izumi({
 izumi({
     pattern: "support",
     fromMe: mode,
-    desc: "Bot Owner",
+    desc: "Izumi Support",
     type: "info",
 }, async (message, match, client) => {
     try {
