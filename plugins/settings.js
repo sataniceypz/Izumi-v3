@@ -20,7 +20,7 @@ izumi({
 }, async (message, match, client) => {
     var amount = value[Math.floor(Math.random() * value.length)];
     const amountInPaise = parseInt(amount, 10) * 1000;
-    const cap = "Iᴢᴜᴍɪ-ᴠ3\n\nRᴇᴘᴏ:*https://github.com/sataniceypz/IZUMI-V3*\n\nSᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ:*https://chat.whatsapp.com/KHvcGD7aEUo8gPocJsYXZe*\n\nLɪᴠᴇ Uꜱᴇʀꜱ Cᴏᴜɴᴛ:https://users.maskser.me";
+    const cap = "Iᴢᴜᴍɪ-ᴠ3\n\nRᴇᴘᴏ:https://github.com/sataniceypz/Izumi-v3\n\nSᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ:https://chat.whatsapp.com/KHvcGD7aEUo8gPocJsYXZe\n\nLɪᴠᴇ Uꜱᴇʀꜱ Cᴏᴜɴᴛ:https://users.maskser.me";
 
     await message.client.relayMessage(message.jid, {
         requestPaymentMessage: {
@@ -123,4 +123,41 @@ izumi({
     }
   }
 );
+izumi({
+    pattern: "support",
+    fromMe: mode,
+    desc: "Bot Owner",
+    type: "info",
+}, async (message, match, client) => {
+    try {
+        const vcard = 'BEGIN:VCARD\n' +
+        'VERSION:3.0\n' +
+        'N:;;;;\n' +
+        'FN:Eypz God\n' +
+        'TEL;type=Mobile;waid=917994489493:+91 79944 89493\n' +
+        "X-WA-BIZ-DESCRIPTION:Izumi, a multi-device WhatsApp bot.\n" +
+        'X-WA-BIZ-NAME:Eypz God\n' +
+        'END:VCARD';
 
+        await client.sendMessage(message.jid, {
+            contacts: {
+                contacts: [{ vcard }]
+            },
+            contextInfo: { 
+                externalAdReply: {
+                    title: "Iᴢᴜᴍɪ Sᴜᴘᴘᴏʀᴛ🧚‍♂️",
+                    body: "Eypz",
+                    sourceUrl: "https://chat.whatsapp.com/KHvcGD7aEUo8gPocJsYXZe",
+                    mediaUrl: "https://chat.whatsapp.com/KHvcGD7aEUo8gPocJsYXZe",
+                    mediaType: 1,
+                    showAdAttribution: true,
+                    renderLargerThumbnail: false,
+                    thumbnailUrl: "https://i.imgur.com/UriXD0j.jpeg"
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Error occurred:', error);
+        await client.sendMessage(message.jid, { text: '```Error occurred while executing the command.```' });
+    }
+});
