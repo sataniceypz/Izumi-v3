@@ -5,7 +5,7 @@
   "main": "./index.js",
   "type": "commonjs",
   "scripts": {
-    "start":  "pm2 start . --attach --name izumi"
+    "start": "pm2 start . --attach --name izumi"
   },
   "repository": {
     "type": "git",
@@ -14,10 +14,9 @@
   "keywords": [
     "bot",
     "izumi",
-    "Eypz",
+    "Eypz"
   ],
   "author": "EYPZ",
-  "developer": "EYPZ",
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/eypz/Izumi-v3/issues"
@@ -26,7 +25,7 @@
   "dependencies": {
     "@adiwajshing/baileys": "git+https://github.com/A-d-i-t-h-y-a-n/Baileys.js.git",
     "@adiwajshing/keyed-db": "^0.2.4",
-    "mask-md" : "^1.1.0",
-    "sqlite3": "^5.1.1",    
+    "mask-md": "^1.1.0",
+    "sqlite3": "^5.1.1"
   }
 }
