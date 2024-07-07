@@ -31,7 +31,7 @@
 
 3. Tutorial
    <br>
-<a href="https://youtu.be/c9jQJK9rasU?si=Suz_JfA2TRmJSVVM"><img align="center" src="https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=Render&logoColor=white" /></a>
+<a href="https://youtu.be/c9jQJK9rasU?si=Suz_JfA2TRmJSVVM"><img align="center" src="https://img.shields.io/badge/-Watch-black?style=for-the-badge&logo=Render&logoColor=white" /></a>
  </p>
  </br>
  
