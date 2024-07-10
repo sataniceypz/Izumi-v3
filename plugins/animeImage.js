@@ -9,7 +9,14 @@ izumi({
   var { url } = await getJson('https://api.waifu.pics/sfw/waifu');
   await message.sendFromUrl(url,{caption: `${config.CAPTION}`});
 });
-
+izumi({
+  pattern: "tsunade",
+  fromMe: mode,
+  desc: "Random anime images",
+  type: "AnimeImage",
+}, async (message, match) => {
+  await message.sendFromUrl("https://api-eypz.onrender.com/tsunade",{caption: "Iᴢᴜᴍɪ"});
+});
 izumi({
   pattern: "neko",
   fromMe: mode,
