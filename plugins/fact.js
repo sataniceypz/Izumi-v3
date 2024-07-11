@@ -1,4 +1,4 @@
-const { izumi, getJson } = require("../lib/");
+const { izumi, mode, getJson } = require("../lib/");
 const config = require("../config");
 izumi(
     {
