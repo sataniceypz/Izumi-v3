@@ -3,7 +3,7 @@ const config = require("../config");
 izumi(
     {
         pattern: "cat-fact",
-        fromMe: true,
+        fromMe: mode,
         desc: "facts about cat",
         type: "fact",
     },
