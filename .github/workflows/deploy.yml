@@ -30,6 +30,11 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Install ffmpeg
+      run: |
+        sudo apt-get update
+        sudo apt-get install ffmpeg
+
     - name: Start application
       run: npm start
       */
