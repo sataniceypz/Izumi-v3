@@ -15,7 +15,7 @@ izumi({
   desc: "Random anime images",
   type: "AnimeImage",
 }, async (message, match) => {
-  await message.sendFromUrl("https://api-eypz.onrender.com/tsunade",{caption: `${config.CAPTION}`});
+  await message.sendFromUrl(eypzApi + 'tsunade',{caption: `${config.CAPTION}`});
 });
 izumi({
   pattern: "neko",
