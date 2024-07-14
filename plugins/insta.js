@@ -45,7 +45,7 @@ izumi(
                 return;
             }
 
-            const response = await getJson(`https://api-eypz.onrender.com/insta?username=${encodeURIComponent(match)}`);
+            const response = await getJson(eypzApi + `nsta?username=${encodeURIComponent(match)}`);
 
             if (!response) {
                 await message.reply("Sorry, no information found for the provided Instagram username.");
