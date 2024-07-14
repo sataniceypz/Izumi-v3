@@ -2,6 +2,7 @@ const {
   izumi,
   mode,
   isUrl,
+  getJson,
   AddMp3Meta,
   getBuffer,
   toAudio,
@@ -153,64 +154,64 @@ izumi(
     );
   }
 );
-izumi({
-  pattern: "play ?(.*)",
-  fromMe: true,
-  desc: "Play YouTube video or audio",
-  type: "user",
-}, async (message, match) => {
-  match = match || message.reply_message.text;
-  if (!match) {
-    await message.reply("🎵 *Give me a query to search* 🎵");
-    return;
-  }
 
-  try {
-    let { dlink, title, vid } = await ytsdl(match);
-    let buff = await getBuffer(dlink);
+izumi(
+    {
+        pattern: "yts ?(.*)",
+        fromMe: mode,
+        desc: "Search YouTube videos",
+        type: "downloader",
+    },
+    async (message, match, m) => {
+        try {
+            match = match || message.reply_message.text;
 
-    let data = {
-      jid: message.jid,
-      button: [
-        {
-          type: "reply",
-          params: {
-            display_text: "📹 VIDEO",
-            id: `${PREFIX}video${match}`,
-          },
-        },
-        {
-          type: "reply",
-          params: {
-            display_text: "🎵 AUDIO",
-            id: `${PREFIX}song${match}`,
-          },
-        },
-        {
-          type: "url",
-          params: {
-            display_text: "🔗 YouTube",
-            url: `https://youtu.be/${vid}`,
-            merchant_url: `https://youtu.be/${vid}`,
-          },
-        },
-      ],
-      header: {
-        title: `${config.BOT_NAME}`,
-        subtitle: "Enjoy your media",
-        hasMediaAttachment: false,
-      },
-      footer: {
-        text: `Powered by ${config.OWNER_NAME}`,
-      },
-      body: {
-        text: `*${title}*\nChoose an option below to proceed:`,
-      },
-    };
+            if (!match) {
+                await message.reply("Please provide a search query to find YouTube videos.\nExample: `.youtube Naruto AMV`");
+                return;
+            }
 
-    await message.sendMessage(message.jid, data, {}, "interactive");
-  } catch (error) {
-    console.error("Error handling:", error);
-    await message.reply(" _Error processing your request. Please try again later._ ");
-  }
-});
+            const response = await getJson(`https://api-eypz.onrender.com/youtube?search=${encodeURIComponent(match)}`);
+
+            if (!response || response.length === 0) {
+                await message.reply("Sorry, no YouTube videos found for your search query.");
+                return;
+            }
+
+            // Format the response into a readable message
+            const formattedMessage = formatYouTubeMessage(response);
+
+            // Construct context info message
+            const contextInfoMessage = {
+                text: formattedMessage,
+                contextInfo: {
+                    mentionedJid: [message.sender],
+                    forwardingScore: 1,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: '120363298577467093@newsletter',
+                        newsletterName: "Iᴢᴜᴍɪ-ᴠ3",
+                        serverMessageId: -1
+                    }
+                }
+            };
+
+            // Send the formatted message with context info
+            await message.client.sendMessage(message.jid, contextInfoMessage);
+
+        } catch (error) {
+            console.error("Error fetching YouTube videos:", error);
+            await message.reply("Error fetching YouTube videos. Please try again later.");
+        }
+    }
+);
+
+function formatYouTubeMessage(videos) {
+    let message = "*YouTube Search Results:*\n\n";
+
+    videos.forEach((video, index) => {
+        message += `${index + 1}. *Title:* ${video.title}\n   *Duration:* ${video.duration}\n   *Link:* ${video.link}\n\n`;
+    });
+
+    return message;
+}
