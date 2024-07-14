@@ -241,7 +241,7 @@ izumi(
         return;
       }
 
-      const response = await getJson(`https://api-eypz.onrender.com/youtube?search=${encodeURIComponent(match)}`);
+      const response = await getJson(eypzApi + `youtube?search=${encodeURIComponent(match)}`);
 
       if (!response || response.length === 0) {
         await message.reply("Sorry, no YouTube videos found for your search query.");
