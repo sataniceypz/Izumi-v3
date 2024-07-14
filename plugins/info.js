@@ -1,4 +1,5 @@
 const { izumi, getJson, mode } = require("../lib/");
+const config = require("../config");
 
 izumi(
     {
@@ -16,7 +17,7 @@ izumi(
                 return;
             }
 
-            const response = await getJson(`https://api-eypz.onrender.com/lyrics?q=${encodeURIComponent(match)}`);
+            const response = await getJson(eypzApi +`lyrics?q=${encodeURIComponent(match)}`);
 
             if (!response || !response.lyrics) {
                 await message.reply("Sorry, lyrics not found for that query.");
@@ -50,7 +51,7 @@ izumi(
                 return;
             }
 
-            const response = await getJson(`https://api-eypz.onrender.com/info/weather?city=${encodeURIComponent(match)}`);
+            const response = await getJson(eypzApi + `info/weather?city=${encodeURIComponent(match)}`);
 
             if (!response || Object.keys(response).length === 0) {
                 await message.reply("Sorry, weather information not found for that city.");
