@@ -1,4 +1,5 @@
 const { izumi, mode, getJson } = require("../lib/");
+const config = require("../config");
 
 izumi(
     {
@@ -104,7 +105,7 @@ izumi(
     },
     async (message) => {
         await fetchFact(
-            "https://api-eypz.onrender.com/details/technology",
+            eypzApi + "details/technology",
             "💻 **Here is your Technology Fact** 💻",
             message
         );
@@ -120,7 +121,7 @@ izumi(
     },
     async (message) => {
         await fetchFact(
-            "https://api-eypz.onrender.com/details/space",
+            eypzApi + "details/space",
             "🛰️ **Here is your Space Fact** ☄️",
             message
         );
@@ -136,7 +137,7 @@ izumi(
     },
     async (message) => {
         await fetchFact(
-            "https://api-eypz.onrender.com/details/history",
+            eypzApi + "details/history",
             "📖 **Here is your History Fact** 📖",
             message
         );
@@ -152,7 +153,7 @@ izumi(
     },
     async (message) => {
         await fetchFact(
-            "https://api-eypz.onrender.com/cat-fact",
+            eypzApi + "cat-fact",
             "🐱 **Here is your Cat Fact** 🐱",
             message
         );
