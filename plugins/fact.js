@@ -89,7 +89,7 @@ izumi(
     },
     async (message) => {
         await fetchFact(
-            "https://api-eypz.onrender.com/details/animals",
+            eypzApi + "details/animals",
             "🐾 **Here is your Animal Fact** 🐾",
             message
         );
