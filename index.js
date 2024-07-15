@@ -1,5 +1,5 @@
 const client = require('./lib/client')
-const port = process.env.PORT || 8000;
+require("./express.js");
 
 const connect = async () => {
 	try {
