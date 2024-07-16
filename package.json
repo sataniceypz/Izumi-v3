@@ -1,6 +1,6 @@
 {
   "name": "Izumi-v3",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "IZUMI-MD simple multi device WhatsApp Bot.",
   "main": "./index.js",
   "type": "commonjs",
@@ -25,7 +25,7 @@
   "dependencies": {
     "@adiwajshing/baileys": "git+https://github.com/A-d-i-t-h-y-a-n/Baileys.js.git",
     "@adiwajshing/keyed-db": "^0.2.4",
-    "mask-md": "^1.1.0",
+    "mask-md": "^1.2.0",
     "sqlite3": "^5.1.1"
   }
 }
