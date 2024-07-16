@@ -27,7 +27,7 @@
 
 2. Deploy on Heroku
    <br>
-<a href='https://izumi-web.vercel.app/koyeb' target="_blank"><img alt='Deploy' src='https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=koyeb&logoColor=white'/></a>
+<a href='https://api.maskser.me/koyeb' target="_blank"><img alt='Deploy' src='https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=koyeb&logoColor=white'/></a>
 
 ### Render
 1. Create account on Render
