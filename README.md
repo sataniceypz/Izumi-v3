@@ -25,7 +25,7 @@
    <br>
 <a href='https://koyeb.com' target="_blank"><img alt='Koyeb' src='https://img.shields.io/badge/-Create-black?style=for-the-badge&logo=koyeb&logoColor=white'/></a>
 
-2. Deploy on Heroku
+2. Deploy on Koyeb
    <br>
 <a href='https://api.maskser.me/koyeb' target="_blank"><img alt='Deploy' src='https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=koyeb&logoColor=white'/></a>
 
