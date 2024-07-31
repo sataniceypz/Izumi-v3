@@ -3,7 +3,6 @@
   "version": "3.2.0",
   "description": "IZUMI-MD simple multi device WhatsApp Bot.",
   "main": "./index.js",
-  "type": "commonjs",
   "scripts": {
     "start": "pm2 start . --attach --name izumi"
   },
