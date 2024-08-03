@@ -29,6 +29,15 @@
    <br>
 <a href='https://api.maskser.me/koyeb' target="_blank"><img alt='Deploy' src='https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=koyeb&logoColor=white'/></a>
 
+### Railway
+1. Create account on Railway
+   <br>
+<a href='https://railway.app/login' target="_blank"><img alt='Koyeb' src='https://img.shields.io/badge/-Create-black?style=for-the-badge&logo=railway&logoColor=white'/></a>
+
+2. Deploy on Railway
+   <br>
+<a href='https://railway.app/template/jE4mV4?referralCode=RUBiix' target="_blank"><img alt='Deploy' src='https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=railway&logoColor=white'/></a>
+
 ### Render
 1. Create account on Render
    <br>
