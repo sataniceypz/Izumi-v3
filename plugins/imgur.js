@@ -30,7 +30,7 @@ izumi({
             fs.writeFileSync(filePath, media); // Save the buffer as a file
             const url = await TelegraphUpload(filePath);
             if (url) {
-                await m.reply(`*_MEDIA UPLOAD SUCCESS._*\nURL: ${util.format(url)}`);
+                await m.reply(`${util.format(url)}`);
             } else {
                 await m.reply("Failed to upload video.");
             }
