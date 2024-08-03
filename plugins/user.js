@@ -49,3 +49,26 @@ izumi(
     }
   }
 );
+izumi(
+  {
+    pattern: "forward ?(.*)",
+    fromMe: true,
+    desc: "Forwards the replied Message",
+    type: "user",
+  },
+  async (message, match) => {
+    if (!message.quoted) return message.reply('Reply to something');
+    
+    let jids = parsedJid(match);
+    for (let i of jids) {
+      const eypz = {
+        text: message.quoted ? message.quoted.message : "Replied message",
+        contextInfo: {
+          isForwarded: false
+        }
+      };
+      
+      await message.forwardMessage(i, message.reply_message.data, eypz);
+    }
+  }
+);
