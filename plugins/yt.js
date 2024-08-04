@@ -111,7 +111,7 @@ izumi(
               jpegThumbnail: Buffer.alloc(0)
             },
             title: `${title}`, 
-            description: "izumi", 
+            description: config.BOT_NAME, 
             currencyCode: "USD",
             priceAmount1000: "100000000//000", 
             retailerId: "Eypz",
@@ -133,7 +133,7 @@ izumi(
         quoted: eypz,
         contextInfo: {
           externalAdReply: {
-            title: "Izumi",
+            title: config.BOT_NAME,
             body: title,
             sourceUrl: "https://github.com/sataniceypz/Izumi-v3",
             mediaUrl: "https://github.com/sataniceypz/Izumi-v3",
