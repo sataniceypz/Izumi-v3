@@ -1,4 +1,4 @@
-const { izumi, mode ,sendMenu, sendSegMenu} = require("../lib/");
+const { izumi, mode ,sendMenu, sendSegMenu, setMenuType } = require("../lib/");
 izumi({
     pattern: "menu ?(.*)",
     desc: "izumi-v3 user manual",
