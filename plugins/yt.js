@@ -20,7 +20,7 @@ izumi(
     pattern: "play ?(.*)",
     fromMe: mode,
     desc: "Play YouTube video or audio",
-    type: "user",
+    type: "downloader",
   },
   async (message, match) => {
 await Play(message,match);
