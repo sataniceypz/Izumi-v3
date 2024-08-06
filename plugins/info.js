@@ -6,7 +6,7 @@ izumi(
         pattern: "lyrics ?(.*)",
         fromMe: mode,
         desc: "Get song lyrics",
-        type: "user",
+        type: "downloader",
     },
     async (message, match, m) => {
         try {
@@ -40,7 +40,7 @@ izumi(
         pattern: "weather ?(.*)",
         fromMe: mode,
         desc: "Get weather information for a city",
-        type: "user",
+        type: "info",
     },
     async (message, match, m) => {
         try {
