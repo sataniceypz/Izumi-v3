@@ -6,7 +6,7 @@ izumi(
         pattern: "fact",
         fromMe: mode,
         desc: "fact commands",
-        type: "user",
+        type: "info",
     },
     async (message) => {
         try {
@@ -85,7 +85,7 @@ izumi(
         pattern: "animal-fact",
         fromMe: mode,
         desc: "Fact about animals",
-        type: "user",
+        type: "info",
     },
     async (message) => {
         await fetchFact(
@@ -101,7 +101,7 @@ izumi(
         pattern: "tech-fact",
         fromMe: mode,
         desc: "Fact about technology",
-        type: "user",
+        type: "info",
     },
     async (message) => {
         await fetchFact(
@@ -117,7 +117,7 @@ izumi(
         pattern: "space-fact",
         fromMe: mode,
         desc: "Fact about space",
-        type: "user",
+        type: "info",
     },
     async (message) => {
         await fetchFact(
