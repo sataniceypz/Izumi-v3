@@ -41,7 +41,7 @@ izumi(
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
                         newsletterJid: '120363298577467093@newsletter',
-                        newsletterName: "Iᴢᴜᴍɪ-ᴠ3",
+                        newsletterName: config.BOT_NAME,
                         serverMessageId: -1
                     }
                 }
@@ -68,7 +68,7 @@ const fetchFact = async (url, formattedMessage, message) => {
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363298577467093@newsletter',
-                    newsletterName: "Iᴢᴜᴍɪ-ᴠ3",
+                    newsletterName: config.BOT_NAME,
                     serverMessageId: -1
                 }
             }
@@ -133,7 +133,7 @@ izumi(
         pattern: "history-fact",
         fromMe: mode,
         desc: "Fact about history",
-        type: "user",
+        type: "info",
     },
     async (message) => {
         await fetchFact(
@@ -149,7 +149,7 @@ izumi(
         pattern: "cat-fact",
         fromMe: mode,
         desc: "Fact about cats",
-        type: "user",
+        type: "info",
     },
     async (message) => {
         await fetchFact(
