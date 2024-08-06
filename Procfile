@@ -1,2 +1,18 @@
-run:
-   worker: npm start 
+web: npm start || yarn start
+
+
+
+# node index.js
+
+
+
+
+
+
+
+
+
+
+
+
+# Creator: Eypz
