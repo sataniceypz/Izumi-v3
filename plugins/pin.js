@@ -4,7 +4,7 @@ izumi(
   {
     pattern: "pinterest ?(.*)",
     fromMe: mode,
-    desc: "Search YouTube videos",
+    desc: "Download pinterest videos",
     type: "downloader",
   },
   async (message, match) => {
