@@ -2,7 +2,7 @@ const { izumi, mode, isUrl, getJson, parsedUrl } = require("../lib");
 const config = require("../config");
 izumi(
   {
-    pattern: "pin ?(.*)",
+    pattern: "pinterest ?(.*)",
     fromMe: mode,
     desc: "Search YouTube videos",
     type: "downloader",
