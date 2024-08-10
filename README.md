@@ -45,7 +45,7 @@
 
 2. Deploy on Render
    <br>
-<a href='https://dashboard.render.com/blueprint/new?repo=https://github.com/sataniceypz/Izumi-v3' target="_blank"><img alt='Deploy' src='https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=Render&logoColor=white'/></a>
+<a href='https://izumi-web.vercel.app/render' target="_blank"><img alt='Deploy' src='https://img.shields.io/badge/-Deploy-black?style=for-the-badge&logo=Render&logoColor=white'/></a>
 
 3. Tutorial
    <br>
