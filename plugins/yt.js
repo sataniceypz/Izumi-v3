@@ -118,6 +118,7 @@ izumi(
       {
         mimetype: "video/mp4",
         filename: title + ".mp4",
+        quoted: message.data
       },
       "video"
     );
@@ -143,6 +144,7 @@ izumi(
       {
         mimetype: "audio/mpeg",
         filename: title + ".mp3",
+        quoted: message.data
       },
       "audio"
     );
@@ -167,6 +169,7 @@ izumi(
       {
         mimetype: "video/mp4",
         filename: title + ".mp4",
+        quoted: message.data
       },
       "video"
     );
