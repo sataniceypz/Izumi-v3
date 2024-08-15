@@ -23,6 +23,9 @@ izumi(
   type: "media",
 }, async (message, match) => {
   try {
+  	   if (!message.reply_message || !message.reply_message.audio) {
+  	    return await message.reply("> Reply to an video!");
+  }
     let buff = await message.quoted.download("buffer");
     console.log(typeof buff);
     buff = await toAudio(buff, "mp3");
