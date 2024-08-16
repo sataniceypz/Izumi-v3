@@ -40,6 +40,8 @@ module.exports = {
   DELETED_LOG_CHAT: process.env.DELETED_LOG_CHAT || false,
   HEROKU_APP_NAME: process.env.HEROKU_APP_NAME || "",
   HEROKU_API_KEY: process.env.HEROKU_API_KEY || "",
+  KOYEB_API_KEY: process.env.KOYEB_API_KEY || "",
+  KOYEB_APP_NAME: process.env.KOYEB_APP_NAME || '',
   HEROKU: toBool(process.env.HEROKU) || false,
   TERMUX: toBool(process.env.TERMUX) || false,
   DATABASE_URL: DATABASE_URL,
