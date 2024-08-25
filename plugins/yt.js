@@ -98,7 +98,7 @@ izumi({
     pattern: 'video ?(.*)',
     fromMe: mode,
     desc: 'Search YouTube and return the MP4 URL.',
-    type: 'info'
+    type: 'downloader'
 }, async (message, match, client) => {
     const query = match || '';
     const searchUrl = `https://api.eypz.c0m.in/youtube?search=${encodeURIComponent(query)}`;
@@ -133,7 +133,7 @@ izumi({
     pattern: 'song ?(.*)',
     fromMe: mode,
     desc: 'Search YouTube and return the MP4 URL.',
-    type: 'info'
+    type: 'downloader'
 }, async (message, match, client) => {
     const query = match || '';
     const searchUrl = `https://api.eypz.c0m.in/youtube?search=${encodeURIComponent(query)}`;
