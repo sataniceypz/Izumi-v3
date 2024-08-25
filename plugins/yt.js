@@ -94,6 +94,89 @@ izumi(
     }
   }
 );
+izumi({
+    pattern: 'video ?(.*)',
+    fromMe: mode,
+    desc: 'Search YouTube and return the MP4 URL.',
+    type: 'info'
+}, async (message, match, client) => {
+    const query = match || '';
+    const searchUrl = `https://api.eypz.c0m.in/youtube?search=${encodeURIComponent(query)}`;
+    
+    try {
+        const searchResponse = await fetch(searchUrl);
+        const searchData = await searchResponse.json();
+        
+        if (searchData.length > 0) {
+            const firstResult = searchData[0];
+            const firstResultLink = firstResult.link;
+            const ytdlUrl = `https://api.eypz.c0m.in/ytdl?url=${encodeURIComponent(firstResultLink)}`;
+            
+            const ytdlResponse = await fetch(ytdlUrl);
+            const ytdlData = await ytdlResponse.json();
+            
+            if (ytdlData?.result?.mp4) {
+                const title = ytdlData.result.title || 'the file';
+                await message.reply(`Downloading ${title}...`);
+                await message.sendFile(ytdlData.result.mp4);
+            } else {
+                await message.reply('No MP4 URL found.');
+            }
+        } else {
+            await message.reply('No search results found.');
+        }
+    } catch (error) {
+        await message.reply('An error occurred while processing your request.');
+    }
+});
+izumi({
+    pattern: 'song ?(.*)',
+    fromMe: mode,
+    desc: 'Search YouTube and return the MP4 URL.',
+    type: 'info'
+}, async (message, match, client) => {
+    const query = match || '';
+    const searchUrl = `https://api.eypz.c0m.in/youtube?search=${encodeURIComponent(query)}`;
+    
+    try {
+        const searchResponse = await fetch(searchUrl);
+        const searchData = await searchResponse.json();
+        
+        if (searchData.length > 0) {
+            const firstResult = searchData[0];
+            const firstResultLink = firstResult.link;
+            const ytdlUrl = `https://api.eypz.c0m.in/ytdl?url=${encodeURIComponent(firstResultLink)}`;
+            
+            const ytdlResponse = await fetch(ytdlUrl);
+            const ytdlData = await ytdlResponse.json();
+            
+            if (ytdlData?.result?.mp4) {
+                const title = ytdlData.result.title || 'the file';
+                await message.reply(`Downloading ${title}...`);
+let videoBuffer = await getBuffer(ytdlData.result.mp4);
+
+      let audioBuffer = await toAudio(videoBuffer, 'ytdlData.result.mp4');
+
+      return await message.sendMessage(
+        message.jid,
+        audioBuffer,
+        {
+          mimetype: "audio/mpeg",
+          filename: `${title}.mp3`,
+          quoted: message.data
+        },
+        "audio"
+      );
+            } else {
+                await message.reply('No MP4 URL found.');
+            }
+        } else {
+            await message.reply('No search results found.');
+        }
+    } catch (error) {
+        await message.reply('An error occurred while processing your request.');
+    }
+});
 izumi(
   {
     pattern: "yts ?(.*)",
