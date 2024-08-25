@@ -15,7 +15,7 @@
 
 2. download termux and run the command
     ```
-   pkg update && pkg install -y nodejs git && git clone https://github.com/mask-sir/izumi-qr.git && cd izumi-qr && npm install && node index.js
+   pkg update && pkg install -y nodejs git && git clone https://github.com/sataniceypz/izumi-qr.git && cd izumi-qr && npm install && node index.js
    ```
 
 1. Fork This Repository
