@@ -15,7 +15,7 @@ const {
 const config = require("../config");
 const fetch = require("node-fetch"); 
   izumi(
-    {
+  {
     pattern: "yta ?(.*)",
     fromMe: mode,
     desc: "Download audio from YouTube",
@@ -26,8 +26,14 @@ const fetch = require("node-fetch");
     if (!match) return await message.reply("Give me a YouTube link");
     if (!isUrl(match)) return await message.reply("Give me a valid YouTube link");
 
+    // Extract video ID using regex
+    let videoId = match.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/|user\/\S+|(?:c\/|channel\/|user\/)\S+|[^=]+v=))([^&?]+)/);
+    if (!videoId || !videoId[1]) return await message.reply("Could not extract video ID. Please provide a valid YouTube link.");
+
+    let cleanUrl = `https://youtu.be/${videoId[1]}`;
+
     try {
-      let response = await fetch(`https://api.eypz.c0m.in/ytdl?url=${encodeURIComponent(match)}`);
+      let response = await fetch(`https://api.eypz.c0m.in/ytdl?url=${encodeURIComponent(cleanUrl)}`);
       let media = await response.json();
 
       if (!media.status) throw new Error("Download failed");
@@ -36,7 +42,6 @@ const fetch = require("node-fetch");
       await message.reply(`> Downloading: ${title}\n\nDescription: _${description}_\n> Duration: ${duration}`);
 
       let videoBuffer = await getBuffer(mp4);
-
       let audioBuffer = await toAudio(videoBuffer, 'mp4');
 
       return await message.sendMessage(
@@ -55,6 +60,7 @@ const fetch = require("node-fetch");
     }
   }
 );
+
 izumi(
   {
     pattern: "ytv ?(.*)",
@@ -67,17 +73,21 @@ izumi(
     if (!match) return await message.reply("Give me a YouTube link");
     if (!isUrl(match)) return await message.reply("Give me a valid YouTube link");
 
+    // Extract video ID using regex
+    let videoId = match.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/|user\/\S+|(?:c\/|channel\/|user\/)\S+|[^=]+v=))([^&?]+)/);
+    if (!videoId || !videoId[1]) return await message.reply("Could not extract video ID. Please provide a valid YouTube link.");
+
+    let cleanUrl = `https://youtu.be/${videoId[1]}`;
+
     try {
-      // Make a request to the new API
-      let response = await fetch(`https://api.eypz.c0m.in/ytdl?url=${encodeURIComponent(match)}`);
-      let media = await response.json(); // Parse the JSON directly
+      let response = await fetch(`https://api.eypz.c0m.in/ytdl?url=${encodeURIComponent(cleanUrl)}`);
+      let media = await response.json();
 
       if (!media.status) throw new Error("Download failed");
 
       let { title, mp4, description, duration } = media.result;
       await message.reply(`> Downloading: ${title}\n\nDescription: _${description}_\n> Duration: ${duration}`);
 
-      // Send the video using the mp4 URL
       return await message.sendMessage(
         message.jid,
         mp4,
