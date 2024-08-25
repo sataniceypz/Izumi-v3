@@ -23,9 +23,6 @@ izumi(
   type: "media",
 }, async (message, match) => {
   try {
-  	   if (!message.reply_message || !message.reply_message.audio) {
-  	    return await message.reply("> Reply to an video!");
-  }
     let buff = await message.quoted.download("buffer");
     console.log(typeof buff);
     buff = await toAudio(buff, "mp3");
@@ -38,7 +35,7 @@ izumi(
     );
   } catch (error) {
     console.error("Error:", error);
-    return await message.send("An error occurred while processing your request.");
+    return await message.sendMessage("An error occurred while processing your request.");
   }
 });
 izumi(
