@@ -111,15 +111,15 @@ izumi({
     type: 'downloader'
 }, async (message, match, client) => {
     const query = match || '';
-    const searchUrl = `https://api.eypz.c0m.in/youtube?search=${encodeURIComponent(query)}`;
+    const searchUrl = `https://api.eypz.c0m.in/ytdl/search?query=${encodeURIComponent(query)}`;
     
     try {
         const searchResponse = await fetch(searchUrl);
         const searchData = await searchResponse.json();
         
-        if (searchData.length > 0) {
-            const firstResult = searchData[0];
-            const firstResultLink = firstResult.link;
+        if (searchData.results.length > 0) {
+            const firstResult = searchData.results[0];
+            const firstResultLink = firstResult.url;
             const ytdlUrl = `https://api.eypz.c0m.in/ytdl?url=${encodeURIComponent(firstResultLink)}`;
             
             const ytdlResponse = await fetch(ytdlUrl);
@@ -146,15 +146,15 @@ izumi({
     type: 'downloader'
 }, async (message, match, client) => {
     const query = match || '';
-    const searchUrl = `https://api.eypz.c0m.in/youtube?search=${encodeURIComponent(query)}`;
+    const searchUrl = `https://api.eypz.c0m.in/ytdl/search?query=${encodeURIComponent(query)}`;
     
     try {
         const searchResponse = await fetch(searchUrl);
         const searchData = await searchResponse.json();
         
-        if (searchData.length > 0) {
-            const firstResult = searchData[0];
-            const firstResultLink = firstResult.link;
+        if (searchData.results.length > 0) {
+            const firstResult = searchData.results[0];
+            const firstResultLink = firstResult.url;
             const ytdlUrl = `https://api.eypz.c0m.in/ytdl?url=${encodeURIComponent(firstResultLink)}`;
             
             const ytdlResponse = await fetch(ytdlUrl);
@@ -163,20 +163,20 @@ izumi({
             if (ytdlData?.result?.mp4) {
                 const title = ytdlData.result.title || 'the file';
                 await message.reply(`Downloading ${title}...`);
-let videoBuffer = await getBuffer(ytdlData.result.mp4);
+                let videoBuffer = await getBuffer(ytdlData.result.mp4);
 
-      let audioBuffer = await toAudio(videoBuffer, 'ytdlData.result.mp4');
+                let audioBuffer = await toAudio(videoBuffer, 'ytdlData.result.mp4');
 
-      return await message.sendMessage(
-        message.jid,
-        audioBuffer,
-        {
-          mimetype: "audio/mpeg",
-          filename: `${title}.mp3`,
-          quoted: message.data
-        },
-        "audio"
-      );
+                return await message.sendMessage(
+                    message.jid,
+                    audioBuffer,
+                    {
+                        mimetype: "audio/mpeg",
+                        filename: `${title}.mp3`,
+                        quoted: message.data
+                    },
+                    "audio"
+                );
             } else {
                 await message.reply('No MP4 URL found.');
             }
@@ -203,7 +203,7 @@ izumi(
         return;
       }
 
-      const response = await getJson(eypzApi + `youtube?search=${encodeURIComponent(match)}`);
+      const response = await getJson(`https://api.eypz.c0m.in/ytdl/search?query=${encodeURIComponent(match)}`);
 
       if (!response || response.length === 0) {
         await message.reply("Sorry, no YouTube videos found for your search query.");
@@ -217,7 +217,7 @@ izumi(
       const contextInfoMessage = {
         text: formattedMessage,
         contextInfo: {
-          mentionedJid: [message.sender],
+          mentionedJid: [],
           forwardingScore: 1,
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
@@ -238,12 +238,13 @@ izumi(
   }
 );
 
-function formatYouTubeMessage(videos) {
+function formatYouTubeMessage(apiResponse) {
+  const videos = apiResponse.results; // Extract the video results array
   let message = "*YouTube Search Results:*\n\n";
 
   videos.forEach((video, index) => {
-    message += `${index + 1}. *Title:* ${video.title}\n   *Duration:* ${video.duration}\n   *Link:* ${video.link}\n\n`;
+    message += `${index + 1}. *Title:* ${video.title}\n   *Author:* ${video.author}\n   *Duration:* ${video.duration}\n   *Link:* ${video.url}\n\n`;
   });
 
   return message;
-        }
+}
