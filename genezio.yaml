@@ -2,8 +2,8 @@ frontend:
     path: ./
     publish: ""
     scripts:
-        build: npm run build
+        build: npm start
         deploy: npm install
-name: Jarvis-md
+name: izumi-v3
 region: us-east-1
 yamlVersion: 2
