@@ -22,12 +22,14 @@
   },
   "homepage": "https://github.com/eypz/Izumi-v3#readme",
   "dependencies": {
-    "@adiwajshing/baileys": "git+https://github.com/A-d-i-t-h-y-a-n/Baileys.js.git",
+     "@adiwajshing/baileys": "git+https://github.com/A-d-i-t-h-y-a-n/Baileys.js.git",
     "@adiwajshing/keyed-db": "^0.2.4",
     "mask-md": "^1.3.0",
     "node-webpmux": "^3.1.0",
     "node": "20",
     "npm": "6",
+    "@neeraj-x0/ytsearch": "^1.0.0",
+    "api-dylux": "^1.8.5",
     "sqlite3": "^5.1.1"
   }
 }
