@@ -1,41 +1,28 @@
+const fetch = require('node-fetch'); 
 const { izumi, mode, getJson } = require("../lib");
 
 izumi({
-    pattern: 'insta ?(.*)', 
+    pattern: 'insta ?(.*)',
     fromMe: mode,
-    desc: 'Send all media from Instagram URL.',
+    desc: 'Download Instagram Media.',
     type: 'downloader'
-}, async (message, match) => {
-    
-    
-    match = match || message.reply_message.text;
+}, async (message, match, client) => {
+    const insta = match.trim();
 
-   
-    if (!match) {
-        return await message.reply('Please provide an Instagram URL.');
+    if (!insta) { 
+        await message.reply("Where is the URL?");
+        return;
     }
 
-   
-    const instaUrl = match.trim();
+    const url = `https://api.eypz.c0m.in/aio?url=${insta}`;
+    const myr = await getJson(url);
+    const medias = myr.medias;
 
-    try {
-        
-        const mediaUrl = `https://api.eypz.c0m.in/aio?url=${encodeURIComponent(instaUrl)}`;
-        
-        const mediaData = await getJson(mediaUrl);
-
-        
-        if (!mediaData || !mediaData.medias || mediaData.medias.length === 0) {
-            return await message.reply('No media found for the provided URL.');
+    if (Array.isArray(medias) && medias.length > 0) {
+        for (let fek of medias) {
+            await message.sendFile(fek);
         }
-
-        
-        for (const media of mediaData.medias) {
-            await message.sendFromUrl(media.url);
-        }
-
-    } catch (error) {
-        console.error('Error fetching media:', error);
-        await message.reply('An error occurred while fetching media.');
+    } else {
+        await message.reply("No media found or an error occurred.");
     }
 });
