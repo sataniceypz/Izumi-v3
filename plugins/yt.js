@@ -39,7 +39,7 @@ const fetch = require("node-fetch");
       if (!media.status) throw new Error("Download failed");
 
       let { title, mp4, description, duration } = media.result;
-      await message.reply(`> Downloading: ${title}\n\nDescription: _${description}_\n> Duration: ${duration}`);
+      await message.reply(`Downloading: ${title}\n\nDescription: _${description}_\n> Duration: ${duration}`);
 
       let videoBuffer = await getBuffer(mp4);
       let audioBuffer = await toAudio(videoBuffer, 'mp4');
@@ -86,7 +86,7 @@ izumi(
       if (!media.status) throw new Error("Download failed");
 
       let { title, mp4, description, duration } = media.result;
-      await message.reply(`> Downloading: ${title}\n\nDescription: _${description}_\n> Duration: ${duration}`);
+      await message.reply(`Downloading: ${title}\n\nDescription: _${description}_\n> Duration: ${duration}`);
 
       return await message.sendMessage(
         message.jid,
