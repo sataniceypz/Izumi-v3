@@ -10,7 +10,6 @@ const {
   yta,
   ytv,
   ytsdl,
-  parsedUrl,
   parsedUrl
 } = require("../lib");
 const yts = require('yt-search');
