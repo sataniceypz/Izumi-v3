@@ -111,21 +111,19 @@ izumi(
       match = match || message.reply_message.text;
 
       if (!match) {
-        await message.reply("Please provide a search query to find YouTube videos.\nExample: `.youtube Naruto AMV`");
+        await message.reply("Please provide a search query to find YouTube videos.\nExample: `.yts Naruto AMV`");
         return;
       }
 
-      const response = await getJson(eypzApi + `youtube?search=${encodeURIComponent(match)}`);
+      const response = await getJson(eypzApi + `ytdl/search?query=${encodeURIComponent(match)}`);
 
-      if (!response || response.length === 0) {
+      if (!response || response.results.length === 0) {
         await message.reply("Sorry, no YouTube videos found for your search query.");
         return;
       }
 
-      
-      const formattedMessage = formatYouTubeMessage(response);
+      const formattedMessage = formatYouTubeMessage(response.results);
 
-      
       const contextInfoMessage = {
         text: formattedMessage,
         contextInfo: {
@@ -140,7 +138,6 @@ izumi(
         }
       };
 
-      
       await message.client.sendMessage(message.jid, contextInfoMessage);
 
     } catch (error) {
@@ -154,9 +151,8 @@ function formatYouTubeMessage(videos) {
   let message = "*YouTube Search Results:*\n\n";
 
   videos.forEach((video, index) => {
-    message += `${index + 1}. *Title:* ${video.title}\n   *Duration:* ${video.duration}\n   *Link:* ${video.link}\n\n`;
+    message += `${index + 1}. *Title:* ${video.title}\n   *Duration:* ${video.duration}\n   *Link:* ${video.url}\n\n`;
   });
 
   return message;
 }
-
