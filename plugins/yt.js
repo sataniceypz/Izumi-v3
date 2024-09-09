@@ -17,9 +17,9 @@ const yts = require('yt-search');
 const fg = require('api-dylux');
 const config = require('../config');
 
-// Function to clean YouTube URL
+
 function cleanUrl(url) {
-  return url.split('?')[0]; // Removes any query parameters after the main URL
+  return url.split('?')[0];
 }
 
 const patterns = [
