@@ -16,17 +16,17 @@ const yts = require('yt-search');
 const fg = require('api-dylux');
 const config = require('../config');
 
-
-function cleanUrl(url) {
-  return url.split('?')[0];
-}
-
 const patterns = [
   { pattern: "song ?(.*)", desc: "YouTube downloader", type: "downloader" },
   { pattern: "video ?(.*)", desc: "YouTube downloader", type: "downloader" },
   { pattern: "yta ?(.*)", desc: "YouTube downloader", type: "downloader" },
   { pattern: "ytv ?(.*)", desc: "YouTube downloader", type: "downloader" }
 ];
+
+// Function to clean the URL by removing everything after '?'
+function cleanUrl(url) {
+  return url.split('?')[0];
+}
 
 patterns.forEach(({ pattern, desc, type }) => {
   izumi(
@@ -38,7 +38,6 @@ patterns.forEach(({ pattern, desc, type }) => {
     },
     async (message, match) => {
       try {
-        
         match = match || message.reply_message.text;
 
         if (!match) return await message.reply("Please provide a YouTube link or search query.");
@@ -46,11 +45,9 @@ patterns.forEach(({ pattern, desc, type }) => {
         let url = match.trim();
         let title = "";
 
-        
         if (isUrl(url)) {
-          url = cleanUrl(url); 
+          url = cleanUrl(url); // Clean the URL
 
-          
           const search = await yts(url);
           const data = search.videos[0];
           if (data) title = data.title;
@@ -62,7 +59,7 @@ patterns.forEach(({ pattern, desc, type }) => {
 
           if (!data) return await message.reply("No results found.");
 
-          url = cleanUrl(data.url);
+          url = cleanUrl(data.url); // Clean the URL from the search result
           title = data.title;
           await message.reply(`_Downloading ${title}_`);
         }
