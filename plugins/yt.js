@@ -1,4 +1,4 @@
-const {
+ const {
   izumi,
   mode,
   isUrl,
@@ -23,7 +23,6 @@ const patterns = [
   { pattern: "ytv ?(.*)", desc: "YouTube downloader", type: "downloader" }
 ];
 
-// Function to clean the URL by removing everything after '?'
 function cleanUrl(url) {
   return url.split('?')[0];
 }
@@ -46,7 +45,7 @@ patterns.forEach(({ pattern, desc, type }) => {
         let title = "";
 
         if (isUrl(url)) {
-          url = cleanUrl(url); // Clean the URL
+          url = url;
 
           const search = await yts(url);
           const data = search.videos[0];
@@ -59,7 +58,7 @@ patterns.forEach(({ pattern, desc, type }) => {
 
           if (!data) return await message.reply("No results found.");
 
-          url = cleanUrl(data.url); // Clean the URL from the search result
+          url = data.url;
           title = data.title;
           await message.reply(`_Downloading ${title}_`);
         }
@@ -95,7 +94,6 @@ patterns.forEach(({ pattern, desc, type }) => {
     }
   );
 });
-
 izumi(
   {
     pattern: "yts ?(.*)",
