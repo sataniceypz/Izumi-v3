@@ -147,14 +147,14 @@ izumi(
           {
             type: "reply",
             params: {
-              display_text: `Download Audio - ${video.title}`,
+              display_text: `mp3- ${video.title}`,
               id: `.yta ${video.url}`,
             },
           },
           {
             type: "reply",
             params: {
-              display_text: `Download Video - ${video.title}`,
+              display_text: `mp4- ${video.title}`,
               id: `.ytv ${video.url}`,
             },
           }
