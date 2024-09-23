@@ -96,6 +96,80 @@ patterns.forEach(({ pattern, desc, type }) => {
 });
 izumi(
   {
+    pattern: "play ?(.*)",
+    fromMe: mode,
+    desc: "Download YouTube videos by a query",
+    type: "downloader",
+  },
+  async (message, match) => {
+    const query = match;
+
+    if (!query) {
+      return await message.reply('Please provide a search query!');
+    }
+
+    try {
+      const searchResults = await yts(query);
+
+      if (searchResults.all.length === 0) {
+        return await message.reply(`No results found for "${query}".`);
+      }
+
+      const firstVideo = searchResults.videos[0];
+      const videoId = firstVideo.videoId;
+      const link = `https://convert-s0ij.onrender.com/convert-thumbnail/${videoId}.png`;
+
+      const url = await message.ParseButtonMedia(link);
+
+      const buttonData = {
+        jid: message.jid,
+        button: [],
+        header: {
+          title: "Downloader",
+          subtitle: "WhatsApp Bot",
+          hasMediaAttachment: true, 
+        },
+        footer: {
+          text: "Choose a download option",
+        },
+        body: {
+          text: `*Top 5 results for "${query}":*`,
+        },
+      };
+
+      buttonData.header.videoMessage = link.endsWith(".mp4") ? url : undefined;
+      buttonData.header.imageMessage = link.endsWith(".png") ? url : undefined;
+
+      for (let i = 0; i < Math.min(searchResults.videos.length, 5); i++) {
+        const video = searchResults.videos[i];
+
+        buttonData.button.push(
+          {
+            type: "reply",
+            params: {
+              display_text: `Download Audio - ${video.title}`,
+              id: `.yta ${video.url}`,
+            },
+          },
+          {
+            type: "reply",
+            params: {
+              display_text: `Download Video - ${video.title}`,
+              id: `.ytv ${video.url}`,
+            },
+          }
+        );
+      }
+
+      await message.sendMessage(message.jid, buttonData, {}, "interactive");
+    } catch (error) {
+      console.error(error);
+      await message.reply('An error occurred while searching. Please try again later.');
+    }
+  }
+);
+izumi(
+  {
     pattern: "yts ?(.*)",
     fromMe: mode,
     desc: "Search YouTube videos",
