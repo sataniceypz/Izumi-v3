@@ -30,8 +30,6 @@
     "npm": "6",
     "@neeraj-x0/ytsearch": "^1.0.0",
     "api-dylux": "^1.8.5",
-    "sqlite3": "^5.1.1",
-    "youtube-dl-exec": "^2.0.0",
-    "ytdl-core-red1ul": "^4.11.9"
+    "sqlite3": "^5.1.1"
   }
 }
