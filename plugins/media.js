@@ -1,5 +1,5 @@
 const config = require("../config");
-const { izumi, mode, toAudio,blackVideo,getFfmpegBuffer,audioCut,videoTrim } = require("../lib/");
+const { izumi, mode, toAudio, blackVideo, AddMp3Meta, getBuffer, getFfmpegBuffer, audioCut, videoTrim } = require("../lib/");
 const fs = require('fs');
 izumi(
   {
@@ -17,22 +17,39 @@ izumi(
   }
 );
  izumi({
-  pattern: "mp3",
+  pattern: "mp3 ?(.*)",
   fromMe: mode,
-  desc: "converts video/voice to mp3",
+  desc: "Converts video/voice to MP3 with metadata from config",
   type: "media",
 }, async (message, match) => {
   try {
+    if (!message.quoted) {
+      return await message.sendMessage("Please quote a video/voice message to convert.");
+    }
+
     let buff = await message.quoted.download("buffer");
     console.log(typeof buff);
+
     buff = await toAudio(buff, "mp3");
     console.log(typeof buff);
-    return await message.sendMessage(
-      message.jid,
-      buff,
-      { mimetype: "audio/mpeg" },
-      "audio"
-    );
+
+    let configParts = config.AUDIO_DATA.match(/[^,;]+/g);
+    let title = configParts[0] ? configParts[0].trim() : "Unknown Title";
+    let artist = configParts[1] ? configParts[1].trim() : "Unknown Artist";
+    artist = [artist];  
+    let url = configParts[2] ? configParts[2].trim() : '';
+    let cover = url ? await getBuffer(url) : null;
+    const res = await AddMp3Meta(buff, cover, {
+      title: title,
+      artist: artist
+    });
+    return await message.client.sendMessage(message.jid, {
+      audio: res,
+      mimetype: "audio/mpeg"
+    }, {
+      quoted: message.data
+    });
+
   } catch (error) {
     console.error("Error:", error);
     return await message.sendMessage("An error occurred while processing your request.");
