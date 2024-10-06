@@ -6,7 +6,7 @@ izumi(
   {
     pattern: "sticker$",
     fromMe: mode,
-    desc: "Converts Photo/video/text to sticker",
+    desc: "Converts Photo/video to sticker",
     type: "converter",
   },
   async (message, match, client) => {
@@ -17,13 +17,16 @@ izumi(
         message.reply_message.text
       )
     )
-      return await message.reply("Reply to photo/video/text");
+      return await message.reply("Reply to photo/video");
 
     let buff = await message.quoted.download("buffer");
+
+    let [pName, aName] = config.STICKER_PACKNAME.split(",") || ["Izumi-v3", "❤️"];
+
     await message.sendMessage(
       message.jid,
       buff,
-      { packname: config.PACKNAME, author: config.AUTHOR },
+      { packname: pName.trim(), author: aName.trim() },
       "sticker"
     );
   }
