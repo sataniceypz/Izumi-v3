@@ -6,7 +6,7 @@ const FormData = require("form-data");
 izumi({
     pattern: 'url ?(.*)',
     fromMe: mode,
-    desc: 'Upload files to Catbox.moe; convert audio to black video with .mp4 URL.',
+    desc: 'Upload files to Catbox.moe .',
     type: 'generator'
 }, async (m, text) => {
     if (!m.quoted) return m.reply("Please reply to an image, video, or audio message.");
@@ -14,7 +14,6 @@ izumi({
     try {
         let media;
 
-        
         if (m.quoted.image || m.quoted.video || m.quoted.audio) {
             media = await m.quoted.download("buffer");
 
@@ -24,19 +23,21 @@ izumi({
                 const videoBuffer = await blackVideo(audioPath);
 
                 
-                const outputVideoPath = 'output.mp4';
+                const outputVideoPath = 'temp.mp4';
                 fs.writeFileSync(outputVideoPath, videoBuffer);
 
                 
                 const formData = new FormData();
                 formData.append('reqtype', 'fileupload');
-                formData.append('fileToUpload', fs.createReadStream(outputVideoPath));
+                formData.append('fileToUpload', fs.createReadStream(outputVideoPath), {
+                    filename: 'temp.mp4', 
+                    contentType: 'video/mp4'
+                });
 
                 const response = await axios.post('https://catbox.moe/user/api.php', formData, {
                     headers: formData.getHeaders()
                 });
 
-                
                 const fileUrl = response.data.trim();
                 await m.reply(fileUrl);
 
@@ -46,13 +47,15 @@ izumi({
                 
                 const formData = new FormData();
                 formData.append('reqtype', 'fileupload');
-                formData.append('fileToUpload', media);
+                formData.append('fileToUpload', media, {
+                    filename: 'temp.mp4',  
+                    contentType: 'video/mp4'  
+                });
 
                 const response = await axios.post('https://catbox.moe/user/api.php', formData, {
                     headers: formData.getHeaders()
                 });
 
-                
                 const fileUrl = response.data.trim();
                 await m.reply(fileUrl);
             } else if (m.quoted.image) {
@@ -68,7 +71,6 @@ izumi({
                     headers: formData.getHeaders()
                 });
 
-               
                 const fileUrl = response.data.trim();
                 await m.reply(fileUrl);
             }
