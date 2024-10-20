@@ -5,7 +5,7 @@ services:
     branch: main
     repo: https://github.com/sataniceypz/Izumi-v3.git
     dockerfilePath: Dockerfile
-    plan: free
+    plan: starter
     autoDeploy: false
     envVars:
       - key: SESSION_ID
