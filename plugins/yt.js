@@ -15,75 +15,53 @@
 const axios = require('axios');
 const ytSearch = require('yt-search');
 const config = require('../config');
-
-const patterns = [
-    { pattern: "song ?(.*)", desc: "YouTube audio downloader", type: "downloader" },
-    { pattern: "video ?(.*)", desc: "YouTube video downloader", type: "downloader" },
-    { pattern: "yta ?(.*)", desc: "YouTube audio downloader", type: "downloader" },
-    { pattern: "ytv ?(.*)", desc: "YouTube video downloader", type: "downloader" }
-];
-
-const handleDownload = async (message, match, type) => {
-    if (!match) return await message.reply('Please provide a YouTube link or search query.');
-
-    let apiUrl;
-    if (match.includes('youtube.com') || match.includes('youtu.be')) {
-        
-        apiUrl = eypzApi + `ytdl?url=${encodeURIComponent(match)}`;
-    } else {
-       
-        try {
-            const searchResults = await ytSearch(match);
-            if (searchResults.videos.length === 0) {
-                return await message.reply('No results found.');
-            }
-            const firstResult = searchResults.videos[0]; 
-            apiUrl = eypzApi + `ytdl?url=${encodeURIComponent(firstResult.url)}`;
-            await message.reply(`Found: ${firstResult.title} (${firstResult.timestamp})`);
-        } catch (error) {
-            return await message.reply('Error occurred while searching for video.');
-        }
-    }
+izumi({
+    pattern: 'yta ?(.*)',
+    fromMe: mode,
+    desc: 'Download audio from a YouTube video.',
+    type: 'info'
+}, async (message, match, client) => {
+    const url = match
 
     try {
-        const response = await axios.get(apiUrl);
-        const videoInfo = response.data.result;
-        const Title = videoInfo.title;
-        const Duration = videoInfo.duration;
-        const downloadLink = videoInfo.mp4_link;
-
-        if (type === "audio") {
-            await message.reply(`Downloading Audio: ${Title} (${Duration})`);
-            await client.sendMessage(message.jid, { 
-                audio: { url: downloadLink },
-                mimetype: 'audio/mpeg' 
-            }, { quoted: message.data });
-        } else if (type === "video") {
-            await message.reply(`Downloading Video: ${Title} (${Duration})`);
-            await client.sendMessage(message.jid, { 
-                video: { url: downloadLink }
-            }, { quoted: message.data });
-        }
+        const response = await axios.get(`https://api-yt-dl-node-eypz.onrender.com/api/ytdl?url=${url}`);
+        const data = response.data;
+        const downloadUrl = data.video.download_url;
+        await message.reply(data.video.title);
+        await client.sendMessage(
+            message.jid,
+            { audio: { url: downloadUrl }, mimetype: 'audio/mpeg', fileName: `${data.video.title}.mp3` },
+            { quoted: message.data }
+        );
     } catch (error) {
-        await message.reply(`Error occurred while fetching ${type}.`);
+        console.error('Error fetching video:', error);
+        await message.reply('Failed to download the audio. Please check the URL and try again.');
     }
-};
+});
 
-patterns.forEach(({ pattern, desc, type }) => {
-    izumi({
-        pattern: pattern,
-        fromMe: true,
-        desc: desc,
-        type: type
-    }, async (message, match) => {
-        if (pattern.includes('yta') || pattern.includes('song')) {
-            
-            await handleDownload(message, match, 'audio');
-        } else if (pattern.includes('ytv') || pattern.includes('video')) {
-            
-            await handleDownload(message, match, 'video');
-        }
-    });
+izumi({
+    pattern: 'ytv ?(.*)',
+    fromMe: mode,
+    desc: 'Download audio from a YouTube video.',
+    type: 'info'
+}, async (message, match, client) => {
+    const url = match
+
+    try {
+        const response = await axios.get(`https://api-yt-dl-node-eypz.onrender.com/api/ytdl?url=${url}`);
+        const data = response.data;
+        const downloadUrl = data.video.download_url;
+
+        await message.reply(data.video.title);
+        await client.sendMessage(
+            message.jid,
+            { video: { url: downloadUrl }, mimetype: 'video/mp4', fileName: `${data.video.title}.mp4` },
+            { quoted: message.data }
+        );
+    } catch (error) {
+        console.error('Error fetching video:', error);
+        await message.reply('Failed to download the audio. Please check the URL and try again.');
+    }
 });
 izumi(
   {
