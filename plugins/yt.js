@@ -13,54 +13,127 @@
   parsedUrl
 } = require("../lib");
 const axios = require('axios');
-const ytSearch = require('yt-search');
 const config = require('../config');
+const yts = require("yt-search");
 izumi({
-    pattern: 'yta ?(.*)',
+    pattern: 'song ?(.*)',
     fromMe: mode,
-    desc: 'Download audio from a YouTube video.',
+    desc: 'Search and download audio from YouTube.',
     type: 'info'
 }, async (message, match, client) => {
-    const url = match
+    if (!match) {
+        return await message.reply('Please provide a search query.');
+    }
 
+    const query = match;
     try {
-        const response = await axios.get(`https://api-yt-dl-node-eypz.onrender.com/api/ytdl?url=${url}`);
-        const data = response.data;
-        const downloadUrl = data.video.download_url;
-        await message.reply(data.video.title);
-        await client.sendMessage(
+        const { videos } = await yts(query);
+        if (videos.length === 0) {
+            return await message.reply('No results found.');
+        }
+
+        const firstVideo = videos[0];
+        const videoUrl = firstVideo.url;
+
+        const response = await axios.get(`https://api.eypz.c0m.in/ytdl?url=${videoUrl}`);
+        const { download_links, title } = response.data;
+        const mp4 = download_links.mp4;
+        await message.reply(`_Downloading ${title}_`);
+        await message.client.sendMessage(
             message.jid,
-            { audio: { url: downloadUrl }, mimetype: 'audio/mpeg', fileName: `${data.video.title}.mp3` },
+            { audio: { url: mp4 }, mimetype: 'audio/mpeg', fileName: `${title}.mp3` },
+            { quoted: message.data }
+        );
+    } catch (error) {
+        console.error('Error fetching audio:', error);
+        await message.reply('Failed to download audio. Please try again later.');
+    }
+});
+izumi({
+    pattern: 'video?(.*)',
+    fromMe: mode,
+    desc: 'Search and download video from YouTube.',
+    type: 'info'
+}, async (message, match, client) => {
+    if (!match) {
+        return await message.reply('Please provide a search query.');
+    }
+
+    const query = match;
+    try {
+        const { videos } = await yts(query);
+        if (videos.length === 0) {
+            return await message.reply('No results found.');
+        }
+
+        const firstVideo = videos[0];
+        const videoUrl = firstVideo.url;
+
+        const response = await axios.get(`https://api.eypz.c0m.in/ytdl?url=${videoUrl}`);
+        const { download_links, title } = response.data;
+        const mp4 = download_links.mp4;
+        await message.reply(`_Downloading ${title}_`);
+        await message.client.sendMessage(
+            message.jid,
+            { video: { url: mp4 }, mimetype: 'video/mp4', fileName: `${title}.mp4` },
             { quoted: message.data }
         );
     } catch (error) {
         console.error('Error fetching video:', error);
-        await message.reply('Failed to download the audio. Please check the URL and try again.');
+        await message.reply('Failed to download video. Please try again later.');
+    }
+});
+izumi({
+    pattern: 'yta ?(.*)',
+    fromMe: mode,
+    desc: 'Download audio from YouTube.',
+    type: 'info'
+}, async (message, match, client) => {
+    if (!match) {
+        return await message.reply('Please provide a YouTube video URL.');
+    }
+
+    const videoUrl = match;
+    try {
+        const response = await axios.get(`https://api.eypz.c0m.in/ytdl?url=${videoUrl}`);
+        const { download_links, title } = response.data;
+        const mp4 = download_links.mp4;
+        await message.reply(`_Downloading ${title}_`);
+        await message.client.sendMessage(
+            message.jid,
+            { audio: { url: mp4 }, mimetype: 'audio/mpeg', fileName: `${title}.mp3` },
+            { quoted: message.data }
+        );
+    } catch (error) {
+        console.error('Error fetching audio:', error);
+        await message.reply('Failed to download audio. Please try again later.');
     }
 });
 
 izumi({
     pattern: 'ytv ?(.*)',
     fromMe: mode,
-    desc: 'Download audio from a YouTube video.',
+    desc: 'Download video from YouTube.',
     type: 'info'
 }, async (message, match, client) => {
-    const url = match
+    if (!match) {
+        return await message.reply('Please provide a YouTube video URL.');
+    }
 
+    const videoUrl = match;
     try {
-        const response = await axios.get(`https://api-yt-dl-node-eypz.onrender.com/api/ytdl?url=${url}`);
-        const data = response.data;
-        const downloadUrl = data.video.download_url;
-
-        await message.reply(data.video.title);
-        await client.sendMessage(
+        const response = await axios.get(`https://api.eypz.c0m.in/ytdl?url=${videoUrl}`);
+        const { download_links, title } = response.data;
+        const mp4 = download_links.mp4;
+        await message.reply(`_Downloading ${title}_`);
+        await message.client.sendMessage(
             message.jid,
-            { video: { url: downloadUrl }, mimetype: 'video/mp4', fileName: `${data.video.title}.mp4` },
+            { video: { url: mp4 }, mimetype: 'video/mp4', fileName: `${title}.mp4` },
             { quoted: message.data }
         );
     } catch (error) {
         console.error('Error fetching video:', error);
-        await message.reply('Failed to download the audio. Please check the URL and try again.');
+        await message.reply('Failed to download video. Please try again later.');
     }
 });
 izumi(
