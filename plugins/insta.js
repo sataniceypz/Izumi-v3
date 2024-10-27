@@ -14,7 +14,7 @@ izumi({
         return;
     }
 
-    const url = eypzApi + `aio?url=${insta}`;
+    const url = `https://api-test-ajko.onrender.com/aio?url=${insta}`;
     const myr = await getJson(url);
     const medias = myr.medias;
 
