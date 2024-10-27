@@ -14,7 +14,7 @@ izumi({
         return;
     }
 
-    const url = `https://api.eypz.c0m.in/aio?url=${insta}`;
+    const url = eypzApi + `aio?url=${insta}`;
     const myr = await getJson(url);
     const medias = myr.medias;
 
