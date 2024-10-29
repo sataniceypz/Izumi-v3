@@ -7,7 +7,7 @@ WORKDIR /root/bot/
 EXPOSE 3000
 
 # Clone the repository to the working directory
-RUN git clone https://github.com/sataniceypz/Izumi-md ./
+RUN git clone https://github.com/sataniceypz/Izumi-v3 /root/bot/
 
 # Install dependencies
 RUN yarn install --network-concurrency 1
