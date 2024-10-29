@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/sataniceypz/Izumi-v3#readme",
   "dependencies": {
-     "@adiwajshing/baileys": "git+https://github.com/A-d-i-t-h-y-a-n/Baileys.js.git",
+    "@adiwajshing/baileys": "git+https://github.com/A-d-i-t-h-y-a-n/Baileys.js.git",
     "@adiwajshing/keyed-db": "^0.2.4",
     "izumi-md": "^1.4.0",
     "node-webpmux": "^3.1.0",
@@ -31,3 +31,4 @@
     "ws": "^8.13.0",
     "sqlite3": "^5.1.1"
   }
+}
