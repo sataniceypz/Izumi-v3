@@ -1,7 +1,7 @@
 {
   "name": "Izumi-v3",
   "version": "3.3.1",
-  "description": "IZUMI-v3 simple multi device WhatsApp Bot.",
+  "description": "IZUMI-MD simple multi device WhatsApp Bot.",
   "main": "./index.js",
   "scripts": {
     "start": "pm2 start . --attach --name izumi"
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/sataniceypz/Izumi-v3#readme",
   "dependencies": {
-    "@adiwajshing/baileys": "git+https://github.com/A-d-i-t-h-y-a-n/Baileys.js.git",
+     "@adiwajshing/baileys": "git+https://github.com/A-d-i-t-h-y-a-n/Baileys.js.git",
     "@adiwajshing/keyed-db": "^0.2.4",
     "izumi-md": "^1.4.0",
     "node-webpmux": "^3.1.0",
