@@ -4,7 +4,7 @@
   "description": "IZUMI-v3 simple multi device WhatsApp Bot.",
   "main": "./index.js",
   "scripts": {
-    "start": "pm2 start . --attach --name izumi"
+    "start": "pm2 start index.js --attach --name izumi"
   },
   "repository": {
     "type": "git",
