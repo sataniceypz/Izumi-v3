@@ -1,5 +1,21 @@
 const { izumi, mode, getJson } = require("../lib");
 const config = require("../config");
+const { getApiConfig } = require('../lib/api.js');
+
+izumi({
+    pattern: 'miku',
+    fromMe: true,
+    desc: 'Sends an anime image of Miku',
+    type: 'anime'
+}, async (message, match, client) => {
+    const { baseUrl, apiKey } = getApiConfig();
+    const img = `${baseUrl}api/anime/miku?apikey=${apiKey}`;
+    await client.sendMessage(
+        message.jid,
+        { image: { url: img }, mimetype: 'image/png', fileName: 'eypz.png' },
+        { quoted: message.data }
+    );
+});
 izumi({
   pattern: "waifu",
   fromMe: mode,
