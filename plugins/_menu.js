@@ -1,28 +1,58 @@
-const { izumi, mode ,sendMenu, sendSegMenu, setMenuType } = require("../lib/");
-izumi({
-    pattern: "menu ?(.*)",
-    desc: "izumi-v3 user manual",
-    fromMe: mode,
-    type: "user",
-}, async (message, match) => {
-    await sendMenu(message, match);
-});
-izumi({
-    pattern: "setmenu ?(.*)",
-    desc: "izumi-v3 menu control panel",
-    fromMe: true,
-    type: "user",
-}, async (message, match) => {
-    await setMenuType(message, match);
-});
-const pluginTypes = ['AnimeImage', 'downloader', 'info', 'whatsapp', 'group', 'media', 'AnimeVideo', 'user', 'generator'];
+const { PREFIX, mode, commands } = require("../lib/events");
+const version = require("../package.json").version;
+const { getJson } = require("../lib/utils");
+const config = require("../config");
 
-pluginTypes.forEach((type) => {
-    izumi({
-        pattern: `.${type}$`,
-        fromMe: mode,
-        dontAddCommandList: true,
-    }, async (message, match) => {
-        await sendSegMenu(message, match,type);
+izumi({
+    pattern: 'menu ?(.*)',
+    fromMe: mode,  
+    desc: 'izumi-v3 user manual',
+    type: 'info'
+}, async (message, match, client) => {
+    const readMore = String.fromCharCode(8206).repeat(4001);
+
+    let menu = `\n╭━━━〔 ${config.BOT_NAME} 〕━━━┈
+  ╭──────────────
+  ❖ │  *OWNER*: ${config.OWNER_NAME}
+  ❖ │  *COMMANDS*: ${commands.filter((command) => command.pattern).length}
+  ❖ │  *MODE*: ${mode ? '𝗣𝗥𝗜𝗩𝗔𝗧𝗘' : '𝗣𝗨𝗕𝗟𝗜𝗖'} 
+  ❖ │  *PREFIX*: ${PREFIX}
+  ❖ │  *VERSION*: ${version}
+  ╰──────────────
+  ╰━━━━━━━━━━━━━━━┈\n ${readMore}`;
+
+    let cmnd = [];
+    let category = [];
+
+    commands.forEach((command) => {
+        let cmd;
+        if (command.pattern instanceof RegExp) {
+            cmd = String(command.pattern).split(/\W+/)[1];
+        }
+
+        if (!command.dontAddCommandList && command.pattern) {
+            let type = command.type ? command.type.toLowerCase() : "misc";
+            cmnd.push({ cmd, type });
+
+            if (!category.includes(type)) category.push(type);
+        }
     });
+
+    cmnd.sort();
+    category.sort().forEach((cmmd) => {
+        menu += `\n ╭─────────────────────┈⚆`;
+        menu += `\n  │ 「 *${cmmd.toUpperCase()}* 」`;
+        menu += `\n ╰┬────────────────────┈⚆`;
+        menu += `\n ╭┴────────────────────┈⚆`;
+        let comad = cmnd.filter(({ type }) => type === cmmd);
+        comad.forEach(({ cmd }) => {
+            menu += `\n❆  ${cmd.trim()}`;
+        });
+        menu += `\n ╰─────────────────────┈⚆`;
+    });
+
+    menu += `\n\n${config.BOT_NAME}`;
+    let mediaUrl = config.MENU_URL;
+
+    await message.sendFromUrl(mediaUrl, { fileLength: "5555544444", gifPlayback: true, caption: menu }, { quoted: message });
 });
