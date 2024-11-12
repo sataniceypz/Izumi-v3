@@ -1,6 +1,5 @@
-const { PREFIX, mode, commands } = require("../lib/events");
+const { PREFIX, mode, commands, getJson } = require("../lib");
 const version = require("../package.json").version;
-const { getJson } = require("../lib/utils");
 const config = require("../config");
 
 izumi({
