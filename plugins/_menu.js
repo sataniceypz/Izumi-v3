@@ -14,7 +14,7 @@ izumi({
   ╭──────────────
   ❖ │  *OWNER*: ${config.OWNER_NAME}
   ❖ │  *COMMANDS*: ${commands.filter((command) => command.pattern).length}
-  ❖ │  *MODE*: ${mode ? '𝗣𝗥𝗜𝗩𝗔𝗧𝗘' : '𝗣𝗨𝗕𝗟𝗜𝗖'} 
+  ❖ │  *MODE*: ${config.MODE} 
   ❖ │  *PREFIX*: ${PREFIX}
   ❖ │  *VERSION*: ${version}
   ╰──────────────
