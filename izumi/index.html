@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Izumi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #000; /* Black background */
+      color: white;
+      text-align: center;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      animation: fadeIn 2s ease-in-out;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      animation: slideIn 2s ease-in-out;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      animation: zoomIn 2s ease-in-out;
+    }
+
+    .button {
+      text-decoration: none;
+      padding: 15px 30px;
+      color: #000; /* Black text */
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: #fff; /* White button */
+      border: 2px solid #fff;
+      border-radius: 30px; /* Rounded button */
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); /* Glow effect */
+      transition: transform 0.3s, box-shadow 0.3s, color 0.3s, background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #000; /* Invert colors on hover */
+      color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.6); /* Glow effect intensifies */
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Izumi is running somewhere</h1>
+  <p>Enjoy</p>
+  <div class="buttons">
+    <a href="https://chat.whatsapp.com/KHvcGD7aEUo8gPocJsYXZe" class="button">WhatsApp Group</a>
+    <a href="https://whatsapp.com/channel/0029Vaf2tKvGZNCmuSg8ma2O" class="button">WhatsApp Channel</a>
+  </div>
+</body>
+</html>
