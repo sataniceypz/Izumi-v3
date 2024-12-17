@@ -90,7 +90,7 @@ animeEndpoints.forEach(({ pattern, endpoint }) => {
         pattern: pattern,
         fromMe: true,
         desc: `Sends an anime image of ${pattern}`,
-        type: 'anime'
+        type: 'AnimeImage'
     }, async (message, match, client) => {
         const { baseUrl, apiKey } = getApiConfig();
         const img = `${baseUrl}api/anime/${endpoint}?apikey=${apiKey}`;
