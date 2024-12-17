@@ -30,6 +30,7 @@
     "npm": "6",
     "@neeraj-x0/ytsearch": "^1.0.0",
     "api-dylux": "^1.8.5",
-    "sqlite3": "^5.1.1"
+    "sqlite3": "^5.1.1",
+    "acrcloud": "^1.4.0"
   }
 }
