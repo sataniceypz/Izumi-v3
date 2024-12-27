@@ -86,6 +86,9 @@
    ```
    git clone https://github.com/sataniceypz/Izumi-v3
    cd Izumi-v3
+   rm -rf package-lock.json
+   npm install @adiwajshing/baileys
+   npm install file-type@16
 4. Configuration
    ```
    echo "TERMUX = true
