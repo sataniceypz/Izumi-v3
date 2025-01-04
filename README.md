@@ -65,7 +65,11 @@
 <a href="https://youtu.be/c9jQJK9rasU?si=Suz_JfA2TRmJSVVM"><img align="center" src="https://img.shields.io/badge/-Watch-black?style=for-the-badge&logo=Render&logoColor=white" /></a>
  </p>
  </br>
- 
+3. Deploy on Panel
+   <br>
+<a href='https://github.com/Axl-Sparky/Izumi-v3/archive/refs/heads/main.zip' target="_blank"><img alt='Deploy' src='https://img.shields.io/badge/-Download-black?style=for-the-badge&logo=Panel&logoColor=white'/></a>
+  </p>
+  <br>
 ### RUN ON VPS/TERMUX
 
 1. Install packages
@@ -87,8 +91,6 @@
    git clone https://github.com/sataniceypz/Izumi-v3
    cd Izumi-v3
    rm -rf package-lock.json
-   npm install @adiwajshing/baileys
-   npm install file-type@16
 4. Configuration
    ```
    echo "TERMUX = true
