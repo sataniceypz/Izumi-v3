@@ -2,6 +2,7 @@ const {
   izumi,
   mode,
   PREFIX,
+  getJson,
   getApiConfig,
 } = require("../lib");
 const fetch = require("node-fetch");
