@@ -20,7 +20,7 @@ izumi({
 try { 
 const { videos } = await yts(match);
 const firstVideo = videos[0];
-url = firstVideo.url;
+const url = firstVideo.url;
 const api = `https://api.siputzx.my.id/api/d/ytmp4?url=${url}`;
  const response = await getJson(api);
 const data = response.data;
@@ -80,7 +80,7 @@ izumi({
 try { 
 const { videos } = await yts(match);
 const firstVideo = videos[0];
-url = firstVideo.url;
+const url = firstVideo.url;
 const api = `https://api.siputzx.my.id/api/d/ytmp4?url=${url}`;
  const response = await getJson(api);
 const data = response.data;
