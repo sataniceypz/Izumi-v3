@@ -72,44 +72,20 @@ izumi({
   }
 
   try {
-    const { baseUrl, apiKey } = await getApiConfig();
-    let videoUrl, videoTitle;
-
-    if (match.startsWith("http")) {
-      videoUrl = match;
-    } else {
-      const { videos } = await yts(match);
-      if (!videos || videos.length === 0) {
-        return await message.reply("No results found for your search query.");
-      }
-
-      const firstVideo = videos[0];
-      videoUrl = firstVideo.url;
-      videoTitle = firstVideo.title;
-    }
-
-    const encodedUrl = encodeURIComponent(videoUrl);
-    const ytApi = `${baseUrl}api/download/yt?url=${encodedUrl}&apikey=${apiKey}`;
-    const response = await fetch(ytApi);
-    const data = await response.json();
-
-    const { result } = data;
-    if (!result || !result.mp4 || !result.title) {
-      return await message.reply("Failed to fetch audio details. Please try again.");
-    }
-
-    const mp4 = result.mp4;
-    const title = videoTitle || result.title;
-    await message.reply(`Downloading: ${title}...`);
-    await client.sendMessage(
-      message.jid,
-      {
-        audio: { url: mp4 },
-        mimetype: "audio/mpeg",
-        fileName: `${title}.mp3`,
-      },
-      { quoted: message.data }
-    );
+  const url = match;
+  const api = `https://api.siputzx.my.id/api/d/ytmp4?url=${url}`;
+ const response = await getJson(api);
+const data = response.data;
+const dl = data.dl;
+const title = data.title;
+await m.reply(`_Downloading ${title}_`);
+await message.client.sendMessage(message.jid, {
+          audio: { url: dl},
+          caption: "myr",
+          mimetype: "audio/mpeg",
+        },
+{ quoted: message.data })
+    
   } catch (error) {
     console.error("Error:", error);
     await message.reply("An error occurred while processing your request. Please try again later.");
@@ -172,6 +148,7 @@ izumi({
     await message.reply("An error occurred while processing your request. Please try again later.");
   }
 });
+
 izumi({
   pattern: "ytv ?(.*)",
   fromMe: mode,
@@ -183,47 +160,20 @@ izumi({
   }
 
   try {
-    const { baseUrl, apiKey } = await getApiConfig();
-    let videoUrl, videoTitle;
-
-    if (match.startsWith("http")) {
-      videoUrl = match;
-    } else {
-      const { videos } = await yts(match);
-      if (!videos || videos.length === 0) {
-        return await message.reply("No results found for your search query.");
-      }
-
-      const firstVideo = videos[0];
-      videoUrl = firstVideo.url;
-      videoTitle = firstVideo.title;
-    }
-
-
-    const encodedUrl = encodeURIComponent(videoUrl);
-    const ytApi = `${baseUrl}api/download/yt?url=${encodedUrl}&apikey=${apiKey}`;
-    const response = await fetch(ytApi);
-    const data = await response.json();
-
-   
-    const { result } = data;
-    if (!result || !result.mp4 || !result.title) {
-      return await message.reply("Failed to fetch audio details. Please try again.");
-    }
-
-    const mp4 = result.mp4;
-    const title = videoTitle || result.title;
+  const url = match;
+  const api = `https://api.siputzx.my.id/api/d/ytmp4?url=${url}`;
+ const response = await getJson(api);
+const data = response.data;
+const dl = data.dl;
+const title = data.title;
+await m.reply(`_Downloading ${title}_`);
+await message.client.sendMessage(message.jid, {
+          video: { url: dl},
+          caption: title,
+          mimetype: "video/mp4",
+        },
+{ quoted: message.data })
     
-    await message.reply(`Downloading: ${title}...`);
-    await client.sendMessage(
-      message.jid,
-      {
-        video: { url: mp4 },
-        mimetype: "video/mp4",
-        fileName: `${title}.mp3`,
-      },
-      { quoted: message.data }
-    );
   } catch (error) {
     console.error("Error:", error);
     await message.reply("An error occurred while processing your request. Please try again later.");
