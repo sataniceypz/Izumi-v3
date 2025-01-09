@@ -5,7 +5,7 @@ izumi(
     pattern: "upload ?(.*)",
     fromMe: mode,
     desc: "send files from multiple URLs",
-    type: "downloader",
+    type: "download",
   },
   async (message, match) => {
     match = match || message.quoted?.text;
