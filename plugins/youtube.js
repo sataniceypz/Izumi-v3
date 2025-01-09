@@ -173,7 +173,7 @@ izumi({
 
 izumi({
     pattern: "play ?(.*)",
-    fromMe: true,
+    fromMe: mode,
     desc: "Search and download YouTube video/audio.",
     type: "download"
 }, async (message, match, client) => {
