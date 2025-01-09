@@ -1,42 +1,15 @@
-const { izumi, mode, getUrl } = require("../lib/");
-const config = require("../config");
-
-izumi(
-    {
-        pattern: "fullss ?(.*)",
-        fromMe: mode,
-        desc: "capture website screenshot",
-        type: "download",
-    },
-    async (message, match, m) => {
-        try {
-            match = match || message.reply_message.text;
-            if (!match) return await message.reply(`*_Need a link_*\n*eg:- .fullss https://github.com/sataniceypz/Izumi-v3*`);
-            let url = await getUrl(match);
-            let res = apiUrl + `api/screenshot?url=${url}&type=phone&full=true&apikey=maskser`;
-            await message.sendFromUrl(res);
-        } catch (error) {
-            await message.reply('Failed to capture screenshot.');
-        }
-    }
-);
-
-izumi(
-    {
-        pattern: "ss ?(.*)",
-        fromMe: mode,
-        desc: "capture website screenshot",
-        type: "downloader",
-    },
-    async (message, match, m) => {
-        try {
-            match = match || message.reply_message.text;
-            if (!match) return await message.reply(`*_Need a link_*\n*eg:- .ss https://github.com/sataniceypz/Izumi-v3*`);
-            let url = await getUrl(match);
-            let res = apiUrl + `api/screenshot?url=${url}&type=desktop&full&apikey=maskser`;
-            await message.sendFromUrl(res);
-        } catch (error) {
-            await message.reply('Failed to capture screenshot.');
-        }
-    }
-);
+const { izumi, mode } = require("../lib");
+izumi({
+  pattern: 'ss ?(.*)',
+  fromMe: mode,
+  desc: 'Download Instagram media (images/videos)',
+  type: 'download',
+}, async (message, match, client) => {
+  try {
+    const imgUrl = (`https://api.siputzx.my.id/api/tools/ssweb?url=${match}&theme=dark&device=desktop`);
+    await message.sendFile(imgUrl);
+  } catch (error) {
+    console.error(error);
+    await message.reply('Error: ' + error.message);
+  }
+});
