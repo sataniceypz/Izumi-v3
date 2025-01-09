@@ -1,28 +1,40 @@
-const fetch = require('node-fetch'); 
-const { izumi, mode, getJson } = require("../lib");
-const axios = require('axios');
+const { izumi, mode } = require("../lib");
+const fetch = require("node-fetch");
 
 izumi({
     pattern: 'insta ?(.*)',
     fromMe: mode,
-    desc: 'Download Instagram Reels',
-    type: 'info'
+    desc: 'Download Instagram media (images/videos)',
+    type: 'download',
 }, async (message, match, client) => {
-    const url = match;
-    const apiUrl = eypzApi + `igdl?url=${encodeURIComponent(url)}`;
-    
     try {
-        const response = await axios.get(apiUrl);
-        if (response.data && response.data.medias && response.data.medias.length > 0) {
-            const mediaLimit = Math.min(response.data.medias.length, 10);
-            for (let i = 0; i < mediaLimit; i++) {
-                await message.sendFile(response.data.medias[i]);
+        const url = match;
+        if (!url) {
+            return await message.reply("Please provide a valid Instagram URL.");
+        }
+
+        const api = `https://api.siputzx.my.id/api/d/igdl?url=${url}`;
+        const res = await fetch(api);
+        if (!res.ok) {
+            return await message.reply("Failed to fetch media. Please try again.");
+        }
+
+        const data = await res.json();
+        const mediad = data.data;
+
+        if (mediad && mediad.length > 0) {
+            let counter = 0;
+            for (const media of mediad) {
+                if (counter >= 10) break;
+                const mediaUrl = media.url;
+                await message.sendFile(mediaUrl);
+                counter++;
             }
         } else {
-            await message.reply('No media found for the provided Instagram URL.');
+            await message.reply("No media found for the provided URL.");
         }
     } catch (error) {
-        console.error('Error fetching Instagram media:', error);
-        await message.reply('An error occurred while fetching the media. Please try again later.');
+        console.error(error);
+        await message.reply("An error occurred while processing the request.");
     }
 });
