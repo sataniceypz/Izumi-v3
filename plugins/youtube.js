@@ -170,3 +170,83 @@ izumi({
     }
   });
 });
+
+izumi({
+    pattern: "play ?(.*)",
+    fromMe: true,
+    desc: "Search and download YouTube video/audio.",
+    type: "download"
+}, async (message, match, client) => {
+    if (!match) return await message.reply("Please provide a search term!");
+
+    const result = await yts(match);
+    if (!result.videos.length) return await message.reply("No results found!");
+
+    const vidurl = result.videos[0].url;
+    const title = result.videos[0].title;
+    const duration = result.videos[0].duration;
+    const thumbnail = result.videos[0].thumbnail;
+    const api = `https://api.siputzx.my.id/api/d/ytmp4?url=${vidurl}`;
+    const res = await fetch(api);
+    const myr = await res.json();
+
+    if (!myr || !myr.data) return await message.reply("Failed to fetch download links!");
+
+    const dl = myr.data.dl;
+    const optionsText = `*_${title}_*\n\n\`\`\`1.\`\`\` *audio*\n\`\`\`2.\`\`\` *video*\n\n_*Send a number as a reply to download*_`;
+
+    const externalAdReply = {
+        title: title,
+        body: "Izumi",
+        sourceUrl: vidurl,
+        mediaUrl: vidurl,
+        mediaType: 1,
+        showAdAttribution: true,
+        renderLargerThumbnail: false,
+        thumbnailUrl: thumbnail
+    };
+
+    const sentMsg = await client.sendMessage(
+        message.jid,
+        {
+            text: optionsText,
+            contextInfo: { externalAdReply: externalAdReply }
+        },
+        { quoted: message.data }
+    );
+
+    client.ev.on("messages.upsert", async (msg) => {
+        const newMessage = msg.messages[0];
+
+        if (
+            newMessage.key.remoteJid === message.jid &&
+            newMessage.message?.extendedTextMessage?.contextInfo?.stanzaId === sentMsg.key.id
+        ) {
+            const userReply = newMessage.message?.conversation || newMessage.message?.extendedTextMessage?.text;
+
+            if (userReply === "1") {
+                await client.sendMessage(
+                    message.jid,
+                    {
+                        audio: { url: dl },
+                        mimetype: "audio/mpeg",
+                        fileName: `eypz.mp3`,
+                        contextInfo: { externalAdReply: externalAdReply }
+                    },
+                    { quoted: message.data }
+                );
+            } else if (userReply === "2") {
+                await client.sendMessage(
+                    message.jid,
+                    {
+                        video: { url: dl },
+                        mimetype: "video/mp4",
+                        caption: `*Title:* ${title}`,
+                        contextInfo: { externalAdReply: externalAdReply }
+                    },
+                    { quoted: message.data }
+                );
+            }
+        }
+    });
+});
