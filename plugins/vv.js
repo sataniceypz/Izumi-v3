@@ -4,7 +4,7 @@ izumi(
     pattern: "vv",
     fromMe: mode,
     desc: "Forwards The View once messsage",
-    type: "downloader",
+    type: "download",
   },
   async (message, match) => {
   	if(!message.quoted) return;
