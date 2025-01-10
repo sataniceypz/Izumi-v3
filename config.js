@@ -38,6 +38,8 @@ module.exports = {
   PROCESSNAME: process.env.PROCESSNAME || "Izumi-v3",
   AUTHOR: process.env.AUTHOR || "Eypz God",
   DELETED_LOG_CHAT: process.env.DELETED_LOG_CHAT || false,
+  RENDER_API_KEY: process.env.RENDERAPI_KEY || "your_render_api_key",
+  RENDER_SERVICE_ID: process.enc.RENDER_SERVICE_ID || "",
   HEROKU_APP_NAME: process.env.HEROKU_APP_NAME || "",
   HEROKU_API_KEY: process.env.HEROKU_API_KEY || "",
   KOYEB_API_KEY: process.env.KOYEB_API_KEY || "your_koyeb_api_key",
@@ -45,6 +47,7 @@ module.exports = {
   KOYEB: toBool(process.env.KOYEB) || false,
   HEROKU: toBool(process.env.HEROKU) || false,
   TERMUX: toBool(process.env.TERMUX) || false,
+  RENDER: toBool(process.env.TERMUX) || false,
   DATABASE_URL: DATABASE_URL,
   DATABASE:
        DATABASE_URL === './database.db' ? new Sequelize({dialect: 'sqlite', storage: DATABASE_URL, logging: false,}) : new Sequelize(DATABASE_URL, {dialect: 'postgres', ssl: true, protocol: 'postgres', dialectOptions: {native: true, ssl: { require: true, rejectUnauthorized: false },}, logging: false,}),
